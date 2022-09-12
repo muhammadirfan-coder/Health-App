@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "437398415130",
-    "project_id": "daktarlagbe-5daef",
-    "storage_bucket": "daktarlagbe-5daef.appspot.com"
+    "project_number": "362536358785",
+    "project_id": "elaajonclickdb",
+    "storage_bucket": "elaajonclickdb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:437398415130:android:c3112d4e0f9f3d7f5f6ea3",
+        "mobilesdk_app_id": "1:362536358785:android:0b46c8888110565371ce80",
         "android_client_info": {
           "package_name": "com.mhutshow.daktarlagbe"
         }
       },
       "oauth_client": [
         {
-          "client_id": "437398415130-tukenf3dlh15kgb94b9qtctpoqtbvvab.apps.googleusercontent.com",
+          "client_id": "362536358785-4adj9b0sbcsd466aa3m6r1fn32i7uoag.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAOtLiikTaemD5cjv98w33baoYpPRo5mkM"
+          "current_key": "AIzaSyCpimBMWGLwnCrDrfyuV2lbPkapW8ZQmu0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "437398415130-tukenf3dlh15kgb94b9qtctpoqtbvvab.apps.googleusercontent.com",
+              "client_id": "362536358785-4adj9b0sbcsd466aa3m6r1fn32i7uoag.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
