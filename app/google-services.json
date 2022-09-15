@@ -1,15 +1,16 @@
 {
   "project_info": {
     "project_number": "362536358785",
+    "firebase_url": "https://elaajonclickdb-default-rtdb.firebaseio.com",
     "project_id": "elaajonclickdb",
     "storage_bucket": "elaajonclickdb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:362536358785:android:0b46c8888110565371ce80",
+        "mobilesdk_app_id": "1:362536358785:android:85c350bab0800c7371ce80",
         "android_client_info": {
-          "package_name": "com.mhutshow.daktarlagbe"
+          "package_name": "com.project.elaajonclick"
         }
       },
       "oauth_client": [
