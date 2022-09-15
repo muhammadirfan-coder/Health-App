@@ -1,10 +1,10 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import android.os.Bundle;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.adapter.MyDoctorsAdapter;
-import com.mhutshow.elaajonclick.model.Doctor;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.adapter.MyDoctorsAdapter;
+import com.project.elaajonclick.model.Doctor;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;

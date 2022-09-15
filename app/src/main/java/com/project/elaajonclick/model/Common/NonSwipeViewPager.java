@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.Common;
+package com.project.elaajonclick.model.Common;
 
 import android.content.Context;
 import android.util.AttributeSet;

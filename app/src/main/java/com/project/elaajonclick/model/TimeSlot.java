@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model;
+package com.project.elaajonclick.model;
 
 public class TimeSlot {
     private Long slot;

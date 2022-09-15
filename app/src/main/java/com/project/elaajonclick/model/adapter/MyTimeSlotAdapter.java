@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.adapter;
+package com.project.elaajonclick.model.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,11 +15,11 @@ import androidx.cardview.widget.CardView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.model.Interface.IRecyclerItemSelectedListener;
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.ApointementInformation;
-import com.mhutshow.elaajonclick.model.TimeSlot;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.model.Interface.IRecyclerItemSelectedListener;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.model.TimeSlot;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 

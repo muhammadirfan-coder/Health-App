@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Daktar Lagbe</string>
+    <string name="app_name">Elaaj On Click</string>
     <string name="main_activity_description">
 Just chat with your mentors</string>
 
-    <string name="login">Connexion</string>
+    <string name="login">Connection</string>
     <string name="chat_with_mentor">
 Chat with a mentor</string>
 
@@ -42,7 +42,7 @@ Chat with a mentor</string>
     <string name="popup_title_permission_files_access">Cette application a besoin de permission pour fonctionner.</string>
     <string name="toast_title_no_image_chosen">Aucune image choisie&#8230;</string>
     <!-- Book api -->
-    <string name="thumbnail">thumbnail</string>
+    <string name="thumbnail">Thumbnail</string>
     <string name="title">Title</string>
     <string name="category">Category</string>
     <string name="price">40 $</string>
@@ -56,19 +56,19 @@ Chat with a mentor</string>
     <string name="Failed_to_Load_data">Please check your Internet Connection</string>
     <string name="NO_RESULT">No matching results</string>
 
-    <string-array name="fiche_type">
+    <string-array name="cure_type">
         <item>Consultation</item>
         <item>Hospitalisation</item>
     </string-array>
 
-    <string-array name="specialite_spinner">
-        <item>Dentiste</item>
-        <item>Médecin général</item>
-        <item>ORL</item>
-        <item>Ophtalmologue</item>
-        <item>Pédiatre</item>
-        <item>Radiologue</item>
-        <item>Rhumatologue</item>
+    <string-array name="specialization_spinner">
+        <item>Dentist</item>
+        <item>General Physician</item>
+        <item>Cardiologist</item>
+        <item>Ophthalmologist</item>
+        <item>Pediatrician</item>
+        <item>Radiologist</item>
+        <item>Pathologist</item>
     </string-array>
 
     <string-array name="blood_spinner">

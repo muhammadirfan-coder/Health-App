@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,10 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.fireStoreApi.DoctorHelper;
-import com.mhutshow.elaajonclick.model.fireStoreApi.PatientHelper;
-import com.mhutshow.elaajonclick.model.fireStoreApi.UserHelper;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.fireStoreApi.DoctorHelper;
+import com.project.elaajonclick.model.fireStoreApi.PatientHelper;
+import com.project.elaajonclick.model.fireStoreApi.UserHelper;
 
 import static android.widget.AdapterView.*;
 
@@ -46,7 +46,7 @@ public class FirstSigninActivity extends AppCompatActivity {
 
         final Spinner specialiteList = (Spinner) findViewById(R.id.specialite_spinner);
         ArrayAdapter<CharSequence> adapterSpecialiteList = ArrayAdapter.createFromResource(this,
-                R.array.specialite_spinner, android.R.layout.simple_spinner_item);
+                R.array.specialization_spinner, android.R.layout.simple_spinner_item);
         adapterSpecialiteList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         specialiteList.setAdapter(adapterSpecialiteList);
         String newAccountType = spinner.getSelectedItem().toString();

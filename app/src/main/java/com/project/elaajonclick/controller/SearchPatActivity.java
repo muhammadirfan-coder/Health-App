@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Doctor;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Doctor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;

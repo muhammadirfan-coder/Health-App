@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.fragment;
+package com.project.elaajonclick.model.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.mhutshow.elaajonclick.R;
+import com.project.elaajonclick.R;
 
 public class BookingStep1Fragment extends Fragment {
 

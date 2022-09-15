@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mhutshow.daktarlagbe">
+    package="com.project.elaajonclick">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,29 +13,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="com.mhutshow.daktarlagbe.controller.MyCalendarDoctorActivity"></activity>
-        <activity android:name="com.mhutshow.daktarlagbe.controller.TestActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.AppointementActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.FicheInfo" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.PatientInfoActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.DossierMedical" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.ChatActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.PatientRequestPage" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.DoctorHomeActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.EditProfileDoctorActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.ConfirmedAppointmensActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.PatientAppointementsActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.ProfilePatientActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.MyDoctorsAvtivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.ProfileDoctorActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.EditProfilePatientActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.DoctorAppointementActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.FicheActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.MyPatientsActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.SearchPatActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.FirstSigninActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.HomeActivity" />
-        <activity android:name="com.mhutshow.daktarlagbe.controller.MainActivity">
+        <activity android:name="com.project.elaajonclick.controller.MyCalendarDoctorActivity"></activity>
+        <activity android:name="com.project.elaajonclick.controller.TestActivity" />
+        <activity android:name="com.project.elaajonclick.controller.AppointementActivity" />
+        <activity android:name="com.project.elaajonclick.controller.FicheInfo" />
+        <activity android:name="com.project.elaajonclick.controller.PatientInfoActivity" />
+        <activity android:name="com.project.elaajonclick.controller.DossierMedical" />
+        <activity android:name="com.project.elaajonclick.controller.ChatActivity" />
+        <activity android:name="com.project.elaajonclick.controller.PatientRequestPage" />
+        <activity android:name="com.project.elaajonclick.controller.DoctorHomeActivity" />
+        <activity android:name="com.project.elaajonclick.controller.EditProfileDoctorActivity" />
+        <activity android:name="com.project.elaajonclick.controller.ConfirmedAppointmensActivity" />
+        <activity android:name="com.project.elaajonclick.controller.PatientAppointementsActivity" />
+        <activity android:name="com.project.elaajonclick.controller.ProfilePatientActivity" />
+        <activity android:name="com.project.elaajonclick.controller.MyDoctorsAvtivity" />
+        <activity android:name="com.project.elaajonclick.controller.ProfileDoctorActivity" />
+        <activity android:name="com.project.elaajonclick.controller.EditProfilePatientActivity" />
+        <activity android:name="com.project.elaajonclick.controller.DoctorAppointementActivity" />
+        <activity android:name="com.project.elaajonclick.controller.FicheActivity" />
+        <activity android:name="com.project.elaajonclick.controller.MyPatientsActivity" />
+        <activity android:name="com.project.elaajonclick.controller.SearchPatActivity" />
+        <activity android:name="com.project.elaajonclick.controller.FirstSigninActivity" />
+        <activity android:name="com.project.elaajonclick.controller.HomeActivity" />
+        <activity android:name="com.project.elaajonclick.controller.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

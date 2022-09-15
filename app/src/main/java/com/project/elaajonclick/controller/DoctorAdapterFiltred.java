@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,9 +15,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.model.Doctor;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.model.Doctor;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;

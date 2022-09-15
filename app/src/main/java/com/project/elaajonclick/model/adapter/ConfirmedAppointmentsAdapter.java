@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.adapter;
+package com.project.elaajonclick.model.adapter;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.ApointementInformation;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;

@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,15 +11,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Common.Common;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
-import static com.mhutshow.elaajonclick.model.Common.Common.convertBloodToInt;
+import static com.project.elaajonclick.model.Common.Common.convertBloodToInt;
 
 public class PatientInfoActivity extends AppCompatActivity {
 

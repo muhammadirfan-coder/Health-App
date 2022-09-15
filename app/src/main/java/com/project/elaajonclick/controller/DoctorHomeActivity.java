@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Common.Common;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;

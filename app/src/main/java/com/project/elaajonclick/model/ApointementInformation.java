@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model;
+package com.project.elaajonclick.model;
 
 public class ApointementInformation {
     private  String patientName,time,doctorId,doctorName,patientId,type,apointementType,chemin;

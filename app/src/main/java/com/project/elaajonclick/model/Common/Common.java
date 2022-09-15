@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.Common;
+package com.project.elaajonclick.model.Common;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

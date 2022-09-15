@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.adapter.PatRequestAdapter;
-import com.mhutshow.elaajonclick.model.Request;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.adapter.PatRequestAdapter;
+import com.project.elaajonclick.model.Request;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;

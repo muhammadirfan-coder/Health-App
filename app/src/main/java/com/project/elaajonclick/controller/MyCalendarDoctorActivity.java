@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.model.Interface.ITimeSlotLoadListener;
-import com.mhutshow.elaajonclick.model.adapter.MyTimeSlotAdapter;
-import com.mhutshow.elaajonclick.model.TimeSlot;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.model.Interface.ITimeSlotLoadListener;
+import com.project.elaajonclick.model.adapter.MyTimeSlotAdapter;
+import com.project.elaajonclick.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;

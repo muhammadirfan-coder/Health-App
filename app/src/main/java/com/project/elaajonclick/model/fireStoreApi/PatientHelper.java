@@ -1,6 +1,6 @@
-package com.mhutshow.elaajonclick.model.fireStoreApi;
+package com.project.elaajonclick.model.fireStoreApi;
 
-import com.mhutshow.elaajonclick.model.Patient;
+import com.project.elaajonclick.model.Patient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model;
+package com.project.elaajonclick.model;
 
 public class Patient {
     private String name;

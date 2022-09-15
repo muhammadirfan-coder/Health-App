@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.fragment;
+package com.project.elaajonclick.model.fragment;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -18,11 +18,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.model.Interface.ITimeSlotLoadListener;
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.adapter.MyTimeSlotAdapter;
-import com.mhutshow.elaajonclick.model.TimeSlot;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.model.Interface.ITimeSlotLoadListener;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.adapter.MyTimeSlotAdapter;
+import com.project.elaajonclick.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;

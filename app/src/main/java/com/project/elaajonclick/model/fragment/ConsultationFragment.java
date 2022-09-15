@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.fragment;
+package com.project.elaajonclick.model.fragment;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mhutshow.elaajonclick.R;
+import com.project.elaajonclick.R;
 
 public class ConsultationFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.adapter.MessageAdapter;
-import com.mhutshow.elaajonclick.model.Message;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.adapter.MessageAdapter;
+import com.project.elaajonclick.model.Message;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;

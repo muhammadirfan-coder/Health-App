@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.Interface;
+package com.project.elaajonclick.model.Interface;
 
 import android.view.View;
 

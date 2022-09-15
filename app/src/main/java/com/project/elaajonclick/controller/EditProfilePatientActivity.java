@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
@@ -13,8 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.UploadImage;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.UploadImage;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +10,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Fiche;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Fiche;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -37,7 +37,7 @@ public class FicheActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //Spinner to choose fiche type
         Spinner spinner = findViewById(R.id.fiche_type_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fiche_type, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cure_type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);

@@ -1,11 +1,11 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.mhutshow.elaajonclick.R;
+import com.project.elaajonclick.R;
 
 public class FicheInfo extends AppCompatActivity {
     TextView t1 ,t2, t3;

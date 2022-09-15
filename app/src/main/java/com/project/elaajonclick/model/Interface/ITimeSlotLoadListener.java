@@ -1,6 +1,6 @@
-package com.mhutshow.elaajonclick.model.Interface;
+package com.project.elaajonclick.model.Interface;
 
-import com.mhutshow.elaajonclick.model.TimeSlot;
+import com.project.elaajonclick.model.TimeSlot;
 
 import java.util.List;
 

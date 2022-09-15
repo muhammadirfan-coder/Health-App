@@ -1,13 +1,13 @@
-package com.mhutshow.elaajonclick.model.adapter;
+package com.project.elaajonclick.model.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.mhutshow.elaajonclick.model.fragment.BookingStep1Fragment;
-import com.mhutshow.elaajonclick.model.fragment.BookingStep2Fragment;
-import com.mhutshow.elaajonclick.model.fragment.BookingStep3Fragment;
+import com.project.elaajonclick.model.fragment.BookingStep1Fragment;
+import com.project.elaajonclick.model.fragment.BookingStep2Fragment;
+import com.project.elaajonclick.model.fragment.BookingStep3Fragment;
 
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
 

@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick;
+package com.project.elaajonclick;
 
 import org.junit.Test;
 

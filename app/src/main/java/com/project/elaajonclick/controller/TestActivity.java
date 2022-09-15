@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -13,10 +13,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.model.Common.NonSwipeViewPager;
-import com.mhutshow.elaajonclick.model.adapter.MyViewPagerAdapter;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.model.Common.NonSwipeViewPager;
+import com.project.elaajonclick.model.adapter.MyViewPagerAdapter;
 import com.shuhart.stepview.StepView;
 
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ import java.util.List;
 
 import butterknife.Unbinder;
 
-import static com.mhutshow.elaajonclick.model.Common.Common.step;
-import static com.mhutshow.elaajonclick.model.fragment.BookingStep1Fragment.spinner;
+import static com.project.elaajonclick.model.Common.Common.step;
+import static com.project.elaajonclick.model.fragment.BookingStep1Fragment.spinner;
 
 public class TestActivity extends AppCompatActivity {
 

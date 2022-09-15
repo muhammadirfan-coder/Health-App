@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.adapter;
+package com.project.elaajonclick.model.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.controller.TestActivity;
-import com.mhutshow.elaajonclick.model.Doctor;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.controller.TestActivity;
+import com.project.elaajonclick.model.Doctor;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;

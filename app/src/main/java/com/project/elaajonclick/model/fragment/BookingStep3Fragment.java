@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.model.fragment;
+package com.project.elaajonclick.model.fragment;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,9 +17,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.ApointementInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

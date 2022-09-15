@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mhutshow.elaajonclick.R;
-import com.mhutshow.elaajonclick.model.Common.Common;
-import com.mhutshow.elaajonclick.model.adapter.ConsultationFragmentAdapter;
+import com.project.elaajonclick.R;
+import com.project.elaajonclick.model.Common.Common;
+import com.project.elaajonclick.model.adapter.ConsultationFragmentAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
