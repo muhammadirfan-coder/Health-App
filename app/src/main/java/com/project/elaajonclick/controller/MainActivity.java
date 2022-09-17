@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -32,6 +32,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.project.elaajonclick.R;
 
 public class MainActivity extends AppCompatActivity {
     private static int RC_SIGN_IN = 100;
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             }else{
-                    Toast.makeText(MainActivity.this, "vous devez rensegner toutes les champs",
+                    Toast.makeText(MainActivity.this, "email or password can't be empty",
                             Toast.LENGTH_SHORT).show();
                     if(!password.equals(confirmPass)){
                         Toast.makeText(MainActivity.this, "Confirm pass don't match password",
@@ -141,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             }else{
-                    Toast.makeText(MainActivity.this, "vous devez rensegnier toutes les champs",
+                    Toast.makeText(MainActivity.this, "Please enter email and password",
                             Toast.LENGTH_SHORT).show();
                 }
             }

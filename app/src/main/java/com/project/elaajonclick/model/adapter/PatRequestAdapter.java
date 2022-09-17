@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.Doctor;
 import com.mhutshow.elaajonclick.model.Patient;
 import com.mhutshow.elaajonclick.model.Request;
@@ -24,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.project.elaajonclick.R;
 
 import static androidx.core.content.ContextCompat.startActivities;
 

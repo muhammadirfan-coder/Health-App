@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.adapter.MessageAdapter;
 import com.mhutshow.elaajonclick.model.Message;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.project.elaajonclick.R;
 
 public class ChatActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;

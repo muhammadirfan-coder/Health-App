@@ -12,10 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.fireStoreApi.DoctorHelper;
 import com.mhutshow.elaajonclick.model.fireStoreApi.PatientHelper;
 import com.mhutshow.elaajonclick.model.fireStoreApi.UserHelper;
+import com.project.elaajonclick.R;
 
 import static android.widget.AdapterView.*;
 

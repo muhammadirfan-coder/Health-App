@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mhutshow.elaajonclick.controller.ChatActivity;
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.ApointementInformation;
 import com.mhutshow.elaajonclick.model.Doctor;
 import com.mhutshow.elaajonclick.model.Patient;
@@ -24,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.project.elaajonclick.R;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;

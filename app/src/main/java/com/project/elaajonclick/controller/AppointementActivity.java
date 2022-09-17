@@ -8,13 +8,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.Hour;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.project.elaajonclick.R;
 
 public class AppointementActivity extends AppCompatActivity {
 

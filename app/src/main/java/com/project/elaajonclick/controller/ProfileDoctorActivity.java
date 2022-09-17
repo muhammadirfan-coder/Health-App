@@ -20,7 +20,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.mhutshow.elaajonclick.R;
+
+import com.project.elaajonclick.R;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;

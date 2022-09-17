@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.Common.Common;
 import com.mhutshow.elaajonclick.model.Interface.ITimeSlotLoadListener;
 import com.mhutshow.elaajonclick.model.adapter.MyTimeSlotAdapter;
@@ -22,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.project.elaajonclick.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

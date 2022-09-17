@@ -17,11 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mhutshow.elaajonclick.model.Common.Common;
 import com.mhutshow.elaajonclick.model.Interface.IRecyclerItemSelectedListener;
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.ApointementInformation;
 import com.mhutshow.elaajonclick.model.TimeSlot;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.project.elaajonclick.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

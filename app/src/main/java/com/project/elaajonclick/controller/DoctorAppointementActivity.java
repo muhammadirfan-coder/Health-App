@@ -3,7 +3,7 @@ package com.mhutshow.elaajonclick.controller;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.adapter.DoctorAppointementAdapter;
 import com.mhutshow.elaajonclick.model.ApointementInformation;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.project.elaajonclick.R;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;

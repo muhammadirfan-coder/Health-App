@@ -11,9 +11,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.Common.Common;
 import com.google.firebase.auth.FirebaseAuth;
+import com.project.elaajonclick.R;
 
 import java.util.Calendar;
 
@@ -29,7 +30,7 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
     Button appointementBtn;
     @OnClick(R.id.profile)
     void profileBtnClick(){
-        Intent k = new Intent(DoctorHomeActivity.this, ProfileDoctorActivity.class);
+        Intent k = new Intent(DoctorHomeActivity.this, com.mhutshow.elaajonclick.controller.ProfileDoctorActivity.class);
         startActivity(k);
     }
     Unbinder unbinder;

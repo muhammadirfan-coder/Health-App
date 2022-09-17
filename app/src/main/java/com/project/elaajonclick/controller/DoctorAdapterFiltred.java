@@ -15,7 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.Common.Common;
 import com.mhutshow.elaajonclick.model.Doctor;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,6 +26,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.project.elaajonclick.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

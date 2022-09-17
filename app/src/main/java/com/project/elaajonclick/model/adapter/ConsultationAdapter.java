@@ -12,13 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mhutshow.elaajonclick.controller.FicheInfo;
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.Fiche;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.project.elaajonclick.R;
 
 public class ConsultationAdapter  extends FirestoreRecyclerAdapter<Fiche,ConsultationAdapter.FicheHolder>{
 

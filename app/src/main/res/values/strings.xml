@@ -62,13 +62,21 @@ Chat with a mentor</string>
     </string-array>
 
     <string-array name="specialite_spinner">
-        <item>Dentiste</item>
-        <item>Médecin général</item>
-        <item>ORL</item>
-        <item>Ophtalmologue</item>
-        <item>Pédiatre</item>
-        <item>Radiologue</item>
-        <item>Rhumatologue</item>
+        <item>Dentist</item>
+        <item>General Physician</item>
+        <item>Dermatologist</item>
+        <item>Pathologist</item>
+        <item>Nutritionist</item>
+        <item>Ophthalmologist</item>
+        <item>Urologist</item>
+        <item>Gastroenterologist</item>
+        <item>Anesthesiologist</item>
+        <item>Podiatrist</item>
+        <item>Radiologist</item>
+        <item>Neurologist</item>
+        <item>Cardiologist</item>
+        <item>Nephrologist</item>
+        <item>Psychiatrist</item>
     </string-array>
 
     <string-array name="blood_spinner">

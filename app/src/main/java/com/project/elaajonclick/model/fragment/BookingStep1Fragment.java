@@ -11,7 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.mhutshow.elaajonclick.R;
+import com.project.elaajonclick.R;
+
 
 public class BookingStep1Fragment extends Fragment {
 

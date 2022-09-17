@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mhutshow.elaajonclick.controller.ChatActivity;
-import com.mhutshow.elaajonclick.R;
+
 import com.mhutshow.elaajonclick.model.Doctor;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.project.elaajonclick.R;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
