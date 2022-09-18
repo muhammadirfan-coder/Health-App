@@ -45,7 +45,7 @@
     <EditText
         android:id="@+id/firstSignTel"
         android:layout_width="299dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:layout_margin="20dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
@@ -105,10 +105,10 @@
     <Button
         android:id="@+id/confirmeBtn"
         android:layout_width="260dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:background="#22BE87"
         android:text="CONFIRM"
-        android:textColor="#ffffff"
+        android:textColor="#4E342E"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
