@@ -13,7 +13,9 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Doctor;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -28,8 +30,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SearchPatActivity extends AppCompatActivity {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference doctorRef = db.collection("Doctor");
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference doctorRef = db.collection("Doctor");
 
     private DoctorAdapterFiltred adapter;
 
@@ -57,8 +59,8 @@ public class SearchPatActivity extends AppCompatActivity {
             }
         });
         //FirestoreRecyclerOptions<Doctor> options = new FirestoreRecyclerOptions.Builder<Doctor>()
-              //  .setQuery(query, Doctor.class)
-              //  .build();
+        //  .setQuery(query, Doctor.class)
+        //  .build();
 
         //adapter = new DoctoreAdapter(options);
 
@@ -81,9 +83,9 @@ public class SearchPatActivity extends AppCompatActivity {
         inflater.inflate(R.menu.navigation_bar, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
 
-        Drawable r= getResources().getDrawable(R.drawable.ic_local_hospital_black_24dp);
+        Drawable r = getResources().getDrawable(R.drawable.ic_local_hospital_black_24dp);
         r.setBounds(0, 0, r.getIntrinsicWidth(), r.getIntrinsicHeight());
-        SpannableString sb = new SpannableString(" Specialite" );
+        SpannableString sb = new SpannableString(" Specialite");
         ImageSpan imageSpan = new ImageSpan(r, ImageSpan.ALIGN_BOTTOM);
         sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         //menu.findItem(R.id.empty).setTitle(sb);
@@ -96,15 +98,17 @@ public class SearchPatActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 DoctorAdapterFiltred.specialiteSearch = false;
-               adapter.getFilter().filter(newText);
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //3 - Handle actions on menu items
@@ -147,7 +151,7 @@ public class SearchPatActivity extends AppCompatActivity {
     }
 
 
-    private void configureToolbar(){
+    private void configureToolbar() {
         // Get the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         toolbar.setTitle("Doctors list");

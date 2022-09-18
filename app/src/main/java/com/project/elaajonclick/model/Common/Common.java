@@ -8,11 +8,11 @@ public class Common {
 
     public static final Object DISABLE_TAG = "DISABLE";
     public static final String KEY_ENABLE_BUTTON_NEXT = "ENABLE_BUTTON_NEXT";
-    public static final String KEY_TIME_SLOT = "TIME_SLOT" ;
-    public static final String KEY_STEP = "STEP" ;
-    public static final String KEY_CONFIRM_BOOKING = "CONFIRM_BOOKING" ;
-    public static String CurrentUserid ;
-    public static  String CurrentUserName;
+    public static final String KEY_TIME_SLOT = "TIME_SLOT";
+    public static final String KEY_STEP = "STEP";
+    public static final String KEY_CONFIRM_BOOKING = "CONFIRM_BOOKING";
+    public static String CurrentUserid;
+    public static String CurrentUserName;
     public static String CurrentUserType = "patient";
     public static int step = 0;
     public static String CurreentDoctor = "testdoc@testdoc.com";
@@ -23,8 +23,8 @@ public class Common {
     public static String CurrentPhone = "062912361255";
     public static SimpleDateFormat simpleFormat = new SimpleDateFormat("dd_MM_yyyy");
 
-    public static int convertBloodToInt(String s){
-        switch (s){
+    public static int convertBloodToInt(String s) {
+        switch (s) {
             case "A+":
                 return 0;
             case "A-":
@@ -45,8 +45,9 @@ public class Common {
                 return 0;
         }
     }
+
     public static String convertTimeSlotToString(int slot) {
-        switch(slot) {
+        switch (slot) {
             case 0:
                 return "9:00-9:30";
             case 1:

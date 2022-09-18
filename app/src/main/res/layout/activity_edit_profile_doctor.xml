@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".controller.EditProfileDoctorActivity">
+    tools:context="com.project.elaajonclick.controller.EditProfileDoctorActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

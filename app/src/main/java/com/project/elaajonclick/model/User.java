@@ -7,11 +7,11 @@ public class User {
     private String email;
     private String type;
 
-    public User(){
+    public User() {
         //need firebase
     }
 
-    public User(String name, String adresse, String tel, String email,String type) {
+    public User(String name, String adresse, String tel, String email, String type) {
         this.name = name;
         this.adresse = adresse;
         this.tel = tel;

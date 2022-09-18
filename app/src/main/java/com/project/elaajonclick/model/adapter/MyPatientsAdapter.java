@@ -13,8 +13,11 @@ import android.widget.TextView;
 
 import com.project.elaajonclick.controller.ChatActivity;
 import com.project.elaajonclick.controller.DossierMedical;
+
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Patient;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,10 +32,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatientsAdapter.MyPatientsHolder> {
-    StorageReference pathReference ;
+    StorageReference pathReference;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.
+     *
      * @param options
      */
     public MyPatientsAdapter(@NonNull FirestoreRecyclerOptions<Patient> options) {
@@ -43,30 +47,30 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
     @Override
     protected void onBindViewHolder(@NonNull final MyPatientsHolder myPatientsHolder, int position, @NonNull final Patient patient) {
         myPatientsHolder.textViewTitle.setText(patient.getName());
-        myPatientsHolder.textViewTelephone.setText("Tél : "+patient.getTel());
+        myPatientsHolder.textViewTelephone.setText("Tél : " + patient.getTel());
         myPatientsHolder.contactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPage(v.getContext(),patient);
+                openPage(v.getContext(), patient);
             }
         });
 
         myPatientsHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPatientMedicalFolder(v.getContext(),patient);
+                openPatientMedicalFolder(v.getContext(), patient);
 
             }
         });
         myPatientsHolder.callBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPage(myPatientsHolder.contactButton.getContext(),patient.getTel());
+                openPage(myPatientsHolder.contactButton.getContext(), patient.getTel());
             }
         });
 
-        String imageId = patient.getEmail()+".jpg"; //add a title image
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
+        String imageId = patient.getEmail() + ".jpg"; //add a title image
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId); //storage the image
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -88,25 +92,27 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
 
 
     }
-    private void openPage(Context wf, String phoneNumber){
+
+    private void openPage(Context wf, String phoneNumber) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber));
         wf.startActivity(intent);
     }
 
-    private void openPatientMedicalFolder(Context medicalFolder, Patient patient){
+    private void openPatientMedicalFolder(Context medicalFolder, Patient patient) {
         Intent intent = new Intent(medicalFolder, DossierMedical.class);
         intent.putExtra("patient_name", patient.getName());
-        intent.putExtra("patient_email",patient.getEmail());
+        intent.putExtra("patient_email", patient.getEmail());
         intent.putExtra("patient_phone", patient.getTel());
         medicalFolder.startActivity(intent);
     }
 
-    private void openPage(Context wf,Patient p){
+    private void openPage(Context wf, Patient p) {
         Intent i = new Intent(wf, ChatActivity.class);
-        i.putExtra("key1",p.getEmail()+"_"+ FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
-        i.putExtra("key2",FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()+"_"+p.getEmail());
+        i.putExtra("key1", p.getEmail() + "_" + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        i.putExtra("key2", FirebaseAuth.getInstance().getCurrentUser().getEmail() + "_" + p.getEmail());
         wf.startActivity(i);
     }
+
     @NonNull
     @Override
     public MyPatientsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -114,7 +120,7 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
         return new MyPatientsHolder(v);
     }
 
-    class MyPatientsHolder extends RecyclerView.ViewHolder{
+    class MyPatientsHolder extends RecyclerView.ViewHolder {
         //Here we hold the MyDoctorItems
         Button callBtn;
         TextView textViewTitle;
@@ -122,6 +128,7 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
         ImageView imageViewPatient;
         Button contactButton;
         RelativeLayout parentLayout;
+
         public MyPatientsHolder(@NonNull View itemView) {
             super(itemView);
             callBtn = itemView.findViewById(R.id.callBtn);
@@ -132,8 +139,6 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
-
-
 
 
 }

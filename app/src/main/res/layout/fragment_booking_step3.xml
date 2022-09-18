@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".model.fragment.BookingStep3Fragment"
+    tools:context="com.project.elaajonclick.model.fragment.BookingStep3Fragment"
     android:orientation="vertical">
 
 

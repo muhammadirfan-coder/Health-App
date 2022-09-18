@@ -10,7 +10,8 @@ public class Message {
     private Date dateCreated;
     private String userSender;
 
-    public Message() { }
+    public Message() {
+    }
 
     public Message(String message, String userSender) {
         this.message = message;
@@ -19,15 +20,30 @@ public class Message {
 
 
     // --- GETTERS ---
-    public String getMessage() { return message; }
+    public String getMessage() {
+        return message;
+    }
 
     @ServerTimestamp
-    public Date getDateCreated() { return dateCreated; }
-    public String getUserSender() { return userSender; }
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public String getUserSender() {
+        return userSender;
+    }
 
     // --- SETTERS ---
-    public void setMessage(String message) { this.message = message; }
-    public void setDateCreated(Date dateCreated) { this.dateCreated = dateCreated; }
-    public void setUserSender(String userSender) { this.userSender = userSender; }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public void setUserSender(String userSender) {
+        this.userSender = userSender;
+    }
 
 }

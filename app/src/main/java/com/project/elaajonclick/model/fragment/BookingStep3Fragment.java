@@ -18,8 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.elaajonclick.model.Common.Common;
+
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.ApointementInformation;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,14 +54,14 @@ public class BookingStep3Fragment extends Fragment {
     TextView txt_booking_phone;
 
     @OnClick(R.id.btn_confirm)
-    void confirmeApointement(){
+    void confirmeApointement() {
         ApointementInformation apointementInformation = new ApointementInformation();
         apointementInformation.setApointementType(Common.Currentaappointementatype);
         apointementInformation.setDoctorId(Common.CurreentDoctor);
         apointementInformation.setDoctorName(Common.CurrentDoctorName);
         apointementInformation.setPatientName(Common.CurrentUserName);
         apointementInformation.setPatientId(Common.CurrentUserid);
-        apointementInformation.setChemin("Doctor/"+Common.CurreentDoctor+"/"+Common.simpleFormat.format(Common.currentDate.getTime())+"/"+String.valueOf(Common.currentTimeSlot));
+        apointementInformation.setChemin("Doctor/" + Common.CurreentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
         apointementInformation.setType("Checked");
         apointementInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
                 .append("at")
@@ -76,26 +79,26 @@ public class BookingStep3Fragment extends Fragment {
                     @Override
                     public void onSuccess(Void aVoid) {
                         getActivity().finish();
-                        Toast.makeText(getContext(),"Success!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
                         Common.currentTimeSlot = -1;
                         Common.currentDate = Calendar.getInstance();
                         Common.step = 0;
                     }
                 }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(),""+e.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        }).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                FirebaseFirestore.getInstance().collection("Doctor").document(Common.CurreentDoctor)
-                        .collection("apointementrequest").document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
-                FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
-                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        FirebaseFirestore.getInstance().collection("Doctor").document(Common.CurreentDoctor)
+                                .collection("apointementrequest").document(apointementInformation.getTime().replace("/", "_")).set(apointementInformation);
+                        FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
+                                .document(apointementInformation.getTime().replace("/", "_")).set(apointementInformation);
 
-            }
-        });
+                    }
+                });
 
 //
     }
@@ -104,7 +107,7 @@ public class BookingStep3Fragment extends Fragment {
     BroadcastReceiver confirmBookingReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.e("TAG", "onReceive: heave been receiver" );
+            Log.e("TAG", "onReceive: heave been receiver");
             setData();
         }
     };
@@ -113,8 +116,8 @@ public class BookingStep3Fragment extends Fragment {
     private void setData() {
         txt_booking_berber_text.setText(Common.CurrentDoctorName);
         txt_booking_time_text.setText(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
-        .append("at")
-        .append(simpleDateFormat.format(Common.currentDate.getTime())));
+                .append("at")
+                .append(simpleDateFormat.format(Common.currentDate.getTime())));
         txt_booking_phone.setText(Common.CurrentPhone);
         txt_booking_type.setText(Common.Currentaappointementatype);
     }
@@ -136,7 +139,7 @@ public class BookingStep3Fragment extends Fragment {
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
 
-        localBroadcastManager.registerReceiver(confirmBookingReceiver,new IntentFilter(Common.KEY_CONFIRM_BOOKING));
+        localBroadcastManager.registerReceiver(confirmBookingReceiver, new IntentFilter(Common.KEY_CONFIRM_BOOKING));
     }
 
     @Override
@@ -146,8 +149,9 @@ public class BookingStep3Fragment extends Fragment {
     }
 
     static BookingStep3Fragment instance;
-    public  static  BookingStep3Fragment getInstance(){
-        if(instance == null )
+
+    public static BookingStep3Fragment getInstance() {
+        if (instance == null)
             instance = new BookingStep3Fragment();
         return instance;
     }
@@ -156,10 +160,10 @@ public class BookingStep3Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        super.onCreateView(inflater,container,savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
 
         View itemView = inflater.inflate(R.layout.fragment_booking_step3, container, false);
-        unbinder = ButterKnife.bind(this,itemView);
+        unbinder = ButterKnife.bind(this, itemView);
 
         return itemView;
     }

@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Fiche;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -63,9 +65,9 @@ public class FicheActivity extends AppCompatActivity implements AdapterView.OnIt
 
     }
 
-    private void addFiche(){
+    private void addFiche() {
         String maladieFiche = maladie.getText().toString();
-        String descriptionFiche =  description.getText().toString();
+        String descriptionFiche = description.getText().toString();
         String traitemenfiche = traitement.getText().toString();
         String typeFiche = ficheType.getSelectedItem().toString();
 
@@ -73,11 +75,11 @@ public class FicheActivity extends AppCompatActivity implements AdapterView.OnIt
         String patient_email = getIntent().getStringExtra("patient_email");
 
 
-        CollectionReference ficheRef = FirebaseFirestore.getInstance().collection("Patient").document(""+patient_email+"")
+        CollectionReference ficheRef = FirebaseFirestore.getInstance().collection("Patient").document("" + patient_email + "")
                 .collection("MyMedicalFolder");
-        ficheRef.document().set(new Fiche(maladieFiche, descriptionFiche, traitemenfiche, typeFiche, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()));
+        ficheRef.document().set(new Fiche(maladieFiche, descriptionFiche, traitemenfiche, typeFiche, FirebaseAuth.getInstance().getCurrentUser().getEmail()));
         //ficheRef.add(new Fiche(maladieFiche, descriptionFiche, traitemenfiche, typeFiche, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()));
-        Toast.makeText(this, "Fiche added."+patient_name, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Fiche added." + patient_name, Toast.LENGTH_LONG).show();
         finish();
     }
 

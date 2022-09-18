@@ -17,9 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.elaajonclick.model.Common.Common;
 import com.project.elaajonclick.model.Interface.IRecyclerItemSelectedListener;
+
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.ApointementInformation;
 import com.project.elaajonclick.model.TimeSlot;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -54,7 +57,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context)
-                .inflate(R.layout.layout_time_slot,parent,false);
+                .inflate(R.layout.layout_time_slot, parent, false);
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         return new MyViewHolder(itemView);
@@ -63,24 +66,23 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.txt_time_slot.setText(new StringBuilder(Common.convertTimeSlotToString(position)).toString());
-        if(timeSlotList.size()==0){
+        if (timeSlotList.size() == 0) {
             holder.card_time_slot.setCardBackgroundColor(context.getResources().getColor(android.R.color.white));
 
             holder.txt_time_slot_description.setText("Available");
             holder.txt_time_slot_description.setTextColor(context.getResources().getColor(android.R.color.black));
             holder.txt_time_slot.setTextColor(context.getResources().getColor(android.R.color.black));
 
-        }
-        else{
-            for (TimeSlot slotValue:timeSlotList){
+        } else {
+            for (TimeSlot slotValue : timeSlotList) {
                 int slot = Integer.parseInt(slotValue.getSlot().toString());
-                if(slot == position){
+                if (slot == position) {
 
                     holder.card_time_slot.setTag(Common.DISABLE_TAG);
                     holder.card_time_slot.setCardBackgroundColor(context.getResources().getColor(android.R.color.darker_gray));
 
                     holder.txt_time_slot_description.setText("Full");
-                    if(slotValue.getType().equals("Checked"))
+                    if (slotValue.getType().equals("Checked"))
                         holder.txt_time_slot_description.setText("Choosen");
                     holder.txt_time_slot_description.setTextColor(context.getResources()
                             .getColor(android.R.color.white));
@@ -94,69 +96,68 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
             cardViewList.add(holder.card_time_slot);
 
 
-            holder.setiRecyclerItemSelectedListener(new IRecyclerItemSelectedListener() {
-                @Override
-                public void onItemSelectedListener(View view, int pos) {
-                    for(CardView cardView:cardViewList) {
-                        if (cardView.getTag() == null)
-                            cardView.setCardBackgroundColor(context.getResources()
-                                    .getColor(android.R.color.white));
-                    }
-                    holder.card_time_slot.setCardBackgroundColor(context.getResources()
-                            .getColor(android.R.color.holo_orange_dark));
-
-                    Intent intent = new Intent(Common.KEY_ENABLE_BUTTON_NEXT);
-                    intent.putExtra(Common.KEY_TIME_SLOT,position);
-                    Common.currentTimeSlot = position ;
-                    intent.putExtra(Common.KEY_STEP,2);
-                    Log.e("pos ", "onItemSelectedListener: "+position );
-                    localBroadcastManager.sendBroadcast(intent);
-                    if(Common.CurrentUserType == "doctor" && holder.txt_time_slot_description.getText().equals("Available")){
-                        AlertDialog.Builder alert = new AlertDialog.Builder(holder.card_time_slot.getContext());
-                        alert.setTitle("Block");
-                        alert.setMessage("Are you sure you want to block?");
-                        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                ApointementInformation apointementInformation = new ApointementInformation();
-                                apointementInformation.setApointementType(Common.Currentaappointementatype);
-                                apointementInformation.setDoctorId(Common.CurreentDoctor);
-                                apointementInformation.setDoctorName(Common.CurrentDoctorName);
-                                apointementInformation.setChemin("Doctor/"+Common.CurreentDoctor+"/"+Common.simpleFormat.format(Common.currentDate.getTime())+"/"+String.valueOf(Common.currentTimeSlot));
-                                apointementInformation.setType("full");
-                                apointementInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
-                                        .append("at")
-                                        .append(simpleDateFormat.format(Common.currentDate.getTime())).toString());
-                                apointementInformation.setSlot(Long.valueOf(Common.currentTimeSlot));
-
-                                DocumentReference bookingDate = FirebaseFirestore.getInstance()
-                                        .collection("Doctor")
-                                        .document(Common.CurreentDoctor)
-                                        .collection(Common.simpleFormat.format(Common.currentDate.getTime()))
-                                        .document(String.valueOf(Common.currentTimeSlot));
-
-                                bookingDate.set(apointementInformation);
-                                dialog.dismiss();
-                            }
-                        });
-
-                        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                dialog.dismiss();
-                            }
-                        });
-
-                        alert.show();
-
-                    }
+        holder.setiRecyclerItemSelectedListener(new IRecyclerItemSelectedListener() {
+            @Override
+            public void onItemSelectedListener(View view, int pos) {
+                for (CardView cardView : cardViewList) {
+                    if (cardView.getTag() == null)
+                        cardView.setCardBackgroundColor(context.getResources()
+                                .getColor(android.R.color.white));
                 }
-            });
-        }
+                holder.card_time_slot.setCardBackgroundColor(context.getResources()
+                        .getColor(android.R.color.holo_orange_dark));
 
+                Intent intent = new Intent(Common.KEY_ENABLE_BUTTON_NEXT);
+                intent.putExtra(Common.KEY_TIME_SLOT, position);
+                Common.currentTimeSlot = position;
+                intent.putExtra(Common.KEY_STEP, 2);
+                Log.e("pos ", "onItemSelectedListener: " + position);
+                localBroadcastManager.sendBroadcast(intent);
+                if (Common.CurrentUserType == "doctor" && holder.txt_time_slot_description.getText().equals("Available")) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(holder.card_time_slot.getContext());
+                    alert.setTitle("Block");
+                    alert.setMessage("Are you sure you want to block?");
+                    alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            ApointementInformation apointementInformation = new ApointementInformation();
+                            apointementInformation.setApointementType(Common.Currentaappointementatype);
+                            apointementInformation.setDoctorId(Common.CurreentDoctor);
+                            apointementInformation.setDoctorName(Common.CurrentDoctorName);
+                            apointementInformation.setChemin("Doctor/" + Common.CurreentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
+                            apointementInformation.setType("full");
+                            apointementInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
+                                    .append("at")
+                                    .append(simpleDateFormat.format(Common.currentDate.getTime())).toString());
+                            apointementInformation.setSlot(Long.valueOf(Common.currentTimeSlot));
+
+                            DocumentReference bookingDate = FirebaseFirestore.getInstance()
+                                    .collection("Doctor")
+                                    .document(Common.CurreentDoctor)
+                                    .collection(Common.simpleFormat.format(Common.currentDate.getTime()))
+                                    .document(String.valueOf(Common.currentTimeSlot));
+
+                            bookingDate.set(apointementInformation);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alert.show();
+
+                }
+            }
+        });
+    }
 
 
     @Override
@@ -165,7 +166,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txt_time_slot,txt_time_slot_description;
+        TextView txt_time_slot, txt_time_slot_description;
         CardView card_time_slot;
 
         IRecyclerItemSelectedListener iRecyclerItemSelectedListener;
@@ -176,16 +177,16 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            card_time_slot = (CardView)itemView.findViewById(R.id.card_time_slot);
-            txt_time_slot = (TextView)itemView.findViewById(R.id.txt_time_slot);
-            txt_time_slot_description = (TextView)itemView.findViewById(R.id.txt_time_slot_description);
+            card_time_slot = (CardView) itemView.findViewById(R.id.card_time_slot);
+            txt_time_slot = (TextView) itemView.findViewById(R.id.txt_time_slot);
+            txt_time_slot_description = (TextView) itemView.findViewById(R.id.txt_time_slot_description);
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            iRecyclerItemSelectedListener.onItemSelectedListener(v,getAdapterPosition());
+            iRecyclerItemSelectedListener.onItemSelectedListener(v, getAdapterPosition());
         }
     }
 }

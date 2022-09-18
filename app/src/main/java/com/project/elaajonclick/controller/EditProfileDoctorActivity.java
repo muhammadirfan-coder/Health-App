@@ -14,7 +14,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.UploadImage;
+
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -46,8 +48,8 @@ public class EditProfileDoctorActivity extends AppCompatActivity {
     private TextInputEditText doctorEmail;
     private TextInputEditText doctorPhone;
     private TextInputEditText doctorAddress;
-    final String currentDoctorUID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+    final String currentDoctorUID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     private Uri uriImage;
 
     private StorageReference pStorageRef;
@@ -55,7 +57,7 @@ public class EditProfileDoctorActivity extends AppCompatActivity {
     private FirebaseFirestore doctorRef;
     private StorageReference pathReference;
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    private StorageReference storageRef = storage.getReference();
+    private final StorageReference storageRef = storage.getReference();
     private DatabaseReference currentUserImg;
 
 

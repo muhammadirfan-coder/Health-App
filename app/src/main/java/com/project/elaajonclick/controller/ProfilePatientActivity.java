@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import dmax.dialog.SpotsDialog;
 
 
@@ -39,8 +40,8 @@ public class ProfilePatientActivity extends AppCompatActivity {
     private MaterialTextView doctorAddress;
     private MaterialTextView doctorAbout;
     private ImageView doctorImage;
-    StorageReference pathReference ;
-    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+    StorageReference pathReference;
+    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef = db.collection("Patient").document("" + doctorID + "");
 
@@ -63,8 +64,8 @@ public class ProfilePatientActivity extends AppCompatActivity {
 
 
         //display profile image
-        String imageId = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId+".jpg");
+        String imageId = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId + ".jpg");
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -88,7 +89,7 @@ public class ProfilePatientActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 doctorName.setText(documentSnapshot.getString("name"));
-               // doctorSpe.setText(documentSnapshot.getString("dateNaissance"));
+                // doctorSpe.setText(documentSnapshot.getString("dateNaissance"));
                 doctorPhone.setText(documentSnapshot.getString("tel"));
                 doctorEmail.setText(documentSnapshot.getString("email"));
                 doctorAddress.setText(documentSnapshot.getString("adresse"));

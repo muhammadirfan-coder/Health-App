@@ -17,9 +17,11 @@ public class Hour {
         this.patient = patient;
         choosen = "false";
     }
-    public Hour(){
+
+    public Hour() {
 
     }
+
     public String getPatient() {
         return patient;
     }

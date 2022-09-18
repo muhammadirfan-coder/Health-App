@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Common.Common;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,6 +29,7 @@ public class PatientInfoActivity extends AppCompatActivity {
     EditText weightBtn;
     Spinner bloodtypeSpinner;
     Button updateBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,30 +48,30 @@ public class PatientInfoActivity extends AppCompatActivity {
 
         FirebaseFirestore.getInstance().collection("Patient").document(patient_email).collection("moreInfo")
                 .document(patient_email).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                weightBtn.setText( ""+documentSnapshot.getString("weight"));
-                heightBtn.setText( ""+documentSnapshot.getString("height"));
-                if(documentSnapshot.getString("bloodType") != null)
-                specialiteList.setSelection(convertBloodToInt(documentSnapshot.getString("bloodType")));
-            }
-        });
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        weightBtn.setText("" + documentSnapshot.getString("weight"));
+                        heightBtn.setText("" + documentSnapshot.getString("height"));
+                        if (documentSnapshot.getString("bloodType") != null)
+                            specialiteList.setSelection(convertBloodToInt(documentSnapshot.getString("bloodType")));
+                    }
+                });
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HashMap<String,Object> map = new HashMap<>();
-                map.put("height",""+heightBtn.getText());
-                map.put("weight",""+weightBtn.getText());
-                map.put("bloodType",""+specialiteList.getSelectedItem().toString());
-                Log.e("tag", "onClick: "+specialiteList.getTag() );
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("height", "" + heightBtn.getText());
+                map.put("weight", "" + weightBtn.getText());
+                map.put("bloodType", "" + specialiteList.getSelectedItem().toString());
+                Log.e("tag", "onClick: " + specialiteList.getTag());
                 FirebaseFirestore.getInstance().collection("Patient").document(patient_email).collection("moreInfo")
                         .document(patient_email).set(map);
-                Toast.makeText(PatientInfoActivity.this,"Update Success!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(PatientInfoActivity.this, "Update Success!", Toast.LENGTH_SHORT).show();
 
             }
         });
-       if(Common.CurrentUserType.equals("patient")){
+        if (Common.CurrentUserType.equals("patient")) {
             updateBtn.setVisibility(View.GONE);
             heightBtn.setEnabled(false);
             weightBtn.setEnabled(false);

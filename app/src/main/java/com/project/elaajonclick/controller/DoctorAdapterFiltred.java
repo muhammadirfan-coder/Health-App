@@ -16,8 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Common.Common;
 import com.project.elaajonclick.model.Doctor;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,17 +35,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFiltred.DoctoreHolder2> implements Filterable {
+public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFiltred.DoctoreHolder2> implements Filterable {
     public static boolean specialiteSearch = false;
     static String doc;
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
     static CollectionReference addRequest = db.collection("Request");
-    private List<Doctor> mTubeList;
+    private final List<Doctor> mTubeList;
     private List<Doctor> mTubeListFiltered;
-    StorageReference pathReference ;
+    StorageReference pathReference;
 
 
-    public DoctorAdapterFiltred(List<Doctor> tubeList){
+    public DoctorAdapterFiltred(List<Doctor> tubeList) {
         mTubeList = tubeList;
         mTubeListFiltered = tubeList;
     }
@@ -59,12 +61,12 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
     @Override
     public void onBindViewHolder(@NonNull DoctoreHolder2 doctoreHolder, int i) {
         final Doctor doctor = mTubeListFiltered.get(i);
-        final TextView t = doctoreHolder.title ;
+        final TextView t = doctoreHolder.title;
         doctoreHolder.title.setText(doctor.getName());
         /// ajouter l'image
 
-        String imageId = doctor.getEmail()+".jpg";
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId);
+        String imageId = doctor.getEmail() + ".jpg";
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId);
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -83,8 +85,8 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
                 // Handle any errors
             }
         });
-        doctoreHolder.specialite.setText("Specialite : "+doctor.getSpecialite());
-        final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+        doctoreHolder.specialite.setText("Specialite : " + doctor.getSpecialite());
+        final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         final String idDoc = doctor.getEmail();
         // doctoreHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));
         doctoreHolder.addDoc.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +108,7 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
         doctoreHolder.appointemenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doc= doctor.getEmail();
+                doc = doctor.getEmail();
                 Common.CurreentDoctor = doctor.getEmail();
                 Common.CurrentDoctorName = doctor.getName();
                 Common.CurrentPhone = doctor.getTel();
@@ -128,17 +130,16 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 String pattern = constraint.toString().toLowerCase();
-                if(pattern.isEmpty()){
+                if (pattern.isEmpty()) {
                     mTubeListFiltered = mTubeList;
                 } else {
                     List<Doctor> filteredList = new ArrayList<>();
-                    for(Doctor tube: mTubeList){
-                        if(specialiteSearch == false) {
+                    for (Doctor tube : mTubeList) {
+                        if (specialiteSearch == false) {
                             if (tube.getName().toLowerCase().contains(pattern) || tube.getName().toLowerCase().contains(pattern)) {
                                 filteredList.add(tube);
                             }
-                        }
-                        else{
+                        } else {
                             if (tube.getSpecialite().toLowerCase().contains(pattern) || tube.getSpecialite().toLowerCase().contains(pattern)) {
                                 filteredList.add(tube);
                             }
@@ -159,6 +160,7 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
             }
         };
     }
+
     class DoctoreHolder2 extends RecyclerView.ViewHolder {
 
         Button appointemenBtn;
@@ -167,16 +169,18 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
         ImageView image;
         Button addDoc;
         Button load;
+
         public DoctoreHolder2(@NonNull View itemView) {
             super(itemView);
             addDoc = itemView.findViewById(R.id.addDocBtn);
-            title= itemView.findViewById(R.id.doctor_view_title);
-            specialite=itemView.findViewById(R.id.text_view_description);
-            image=itemView.findViewById(R.id.doctor_item_image);
-            appointemenBtn=itemView.findViewById(R.id.appointemenBtn);
+            title = itemView.findViewById(R.id.doctor_view_title);
+            specialite = itemView.findViewById(R.id.text_view_description);
+            image = itemView.findViewById(R.id.doctor_item_image);
+            appointemenBtn = itemView.findViewById(R.id.appointemenBtn);
         }
     }
-    private void openPage(Context wf){
+
+    private void openPage(Context wf) {
         Intent i = new Intent(wf, TestActivity.class);
         wf.startActivity(i);
     }

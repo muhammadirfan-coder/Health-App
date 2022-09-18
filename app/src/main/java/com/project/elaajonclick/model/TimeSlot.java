@@ -2,7 +2,7 @@ package com.project.elaajonclick.model;
 
 public class TimeSlot {
     private Long slot;
-    private String type ;
+    private String type;
     private String chemin;
 
     public String getChemin() {

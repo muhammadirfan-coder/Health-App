@@ -12,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.elaajonclick.controller.FicheInfo;
+
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Fiche;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -21,7 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class HospitalisationAdapter  extends FirestoreRecyclerAdapter<Fiche,HospitalisationAdapter.FicheHolder2> {
+public class HospitalisationAdapter extends FirestoreRecyclerAdapter<Fiche, HospitalisationAdapter.FicheHolder2> {
 
     public HospitalisationAdapter(@NonNull FirestoreRecyclerOptions<Fiche> options) {
         super(options);
@@ -29,20 +31,21 @@ public class HospitalisationAdapter  extends FirestoreRecyclerAdapter<Fiche,Hosp
 
     @Override
     protected void onBindViewHolder(@NonNull FicheHolder2 holder, int position, @NonNull final Fiche model) {
-        FirebaseFirestore.getInstance().document("Doctor/"+model.getDoctor()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        FirebaseFirestore.getInstance().document("Doctor/" + model.getDoctor()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 holder.doctor_name.setText(documentSnapshot.getString("name"));
             }
-        });        holder.type.setText(model.getType());
+        });
+        holder.type.setText(model.getType());
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPage(v.getContext(),model);
+                openPage(v.getContext(), model);
             }
         });
-        String[] date ;
-        if(model.getDateCreated() != null) {
+        String[] date;
+        if (model.getDateCreated() != null) {
             date = model.getDateCreated().toString().split(" ");
             // Thu Jun 04 14:46:12 GMT+01:00 2020
             holder.appointement_day_name.setText(date[0]);
@@ -53,11 +56,11 @@ public class HospitalisationAdapter  extends FirestoreRecyclerAdapter<Fiche,Hosp
 
     }
 
-    private void openPage(Context wf, Fiche m){
+    private void openPage(Context wf, Fiche m) {
         Intent i = new Intent(wf, FicheInfo.class);
         i.putExtra("dateCreated", m.getDateCreated().toString());
-        i.putExtra("doctor",m.getDoctor());
-        i.putExtra("description",m.getDescription());
+        i.putExtra("doctor", m.getDoctor());
+        i.putExtra("description", m.getDescription());
         wf.startActivity(i);
     }
 

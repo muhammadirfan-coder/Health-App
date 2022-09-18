@@ -13,9 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.elaajonclick.model.Common.Common;
+
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.controller.TestActivity;
 import com.project.elaajonclick.model.Doctor;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,10 +41,10 @@ public class DoctoreAdapter extends FirestoreRecyclerAdapter<Doctor, DoctoreAdap
 
     @Override
     protected void onBindViewHolder(@NonNull final DoctoreHolder doctoreHolder, int i, @NonNull final Doctor doctor) {
-        final TextView t = doctoreHolder.title ;
+        final TextView t = doctoreHolder.title;
         doctoreHolder.title.setText(doctor.getName());
-        doctoreHolder.specialite.setText("Specialite : "+doctor.getSpecialite());
-        final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+        doctoreHolder.specialite.setText("Specialite : " + doctor.getSpecialite());
+        final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         final String idDoc = doctor.getEmail();
         // doctoreHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));
         doctoreHolder.addDoc.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +66,7 @@ public class DoctoreAdapter extends FirestoreRecyclerAdapter<Doctor, DoctoreAdap
         doctoreHolder.appointemenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doc= doctor.getEmail();
+                doc = doctor.getEmail();
                 Common.CurreentDoctor = doctor.getEmail();
                 openPage(v.getContext());
 
@@ -89,16 +92,18 @@ public class DoctoreAdapter extends FirestoreRecyclerAdapter<Doctor, DoctoreAdap
         ImageView image;
         Button addDoc;
         Button load;
+
         public DoctoreHolder(@NonNull View itemView) {
             super(itemView);
             addDoc = itemView.findViewById(R.id.addDocBtn);
-            title= itemView.findViewById(R.id.doctor_view_title);
-            specialite=itemView.findViewById(R.id.text_view_description);
-            image=itemView.findViewById(R.id.doctor_item_image);
-            appointemenBtn=itemView.findViewById(R.id.appointemenBtn);
+            title = itemView.findViewById(R.id.doctor_view_title);
+            specialite = itemView.findViewById(R.id.text_view_description);
+            image = itemView.findViewById(R.id.doctor_item_image);
+            appointemenBtn = itemView.findViewById(R.id.appointemenBtn);
         }
     }
-    private void openPage(Context wf){
+
+    private void openPage(Context wf) {
         Intent i = new Intent(wf, TestActivity.class);
         wf.startActivity(i);
     }

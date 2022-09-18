@@ -8,7 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.ApointementInformation;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,7 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<ApointementInformation, ConfirmedAppointmentsAdapter.ConfirmedAppointmentsHolder> {
-    StorageReference pathReference ;
+    StorageReference pathReference;
+
     public ConfirmedAppointmentsAdapter(@NonNull FirestoreRecyclerOptions<ApointementInformation> options) {
         super(options);
     }
@@ -32,8 +35,8 @@ public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<Apoin
         confirmedAppointmentsHolder.patientName.setText(apointementInformation.getPatientName());
         confirmedAppointmentsHolder.appointementType.setText(apointementInformation.getApointementType());
 
-        String imageId = apointementInformation.getPatientId()+".jpg"; //add a title image
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
+        String imageId = apointementInformation.getPatientId() + ".jpg"; //add a title image
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId); //storage the image
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -62,11 +65,12 @@ public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<Apoin
         return new ConfirmedAppointmentsAdapter.ConfirmedAppointmentsHolder(v);
     }
 
-    class ConfirmedAppointmentsHolder extends RecyclerView.ViewHolder{
+    class ConfirmedAppointmentsHolder extends RecyclerView.ViewHolder {
         TextView dateAppointement;
         TextView patientName;
         TextView appointementType;
         ImageView patientImage;
+
         public ConfirmedAppointmentsHolder(@NonNull View itemView) {
             super(itemView);
             dateAppointement = itemView.findViewById(R.id.appointement_date);

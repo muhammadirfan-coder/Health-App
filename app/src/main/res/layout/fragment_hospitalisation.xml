@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="#EDD9CF"
-    tools:context=".controller.Hospitalisation">
+    tools:context="com.project.elaajonclick.controller.Hospitalisation">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hospitalisationRecycleView"

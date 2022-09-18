@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Common.Common;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -21,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     Button BtnRequst;
     Button profile;
     Button appointment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(k);
             }
         });
-        searchPatBtn = (Button)findViewById(R.id.searchBtn);
+        searchPatBtn = (Button) findViewById(R.id.searchBtn);
         searchPatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(k);
             }
         });
-        SignOutBtn=findViewById(R.id.signOutBtn);
+        SignOutBtn = findViewById(R.id.signOutBtn);
         SignOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        myDoctors = (Button)findViewById(R.id.myDoctors);
+        myDoctors = (Button) findViewById(R.id.myDoctors);
         myDoctors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DossierMedical.class);
-                intent.putExtra("patient_email",FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
+                intent.putExtra("patient_email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
                 startActivity(intent);
             }
         });
@@ -79,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        Common.CurrentUserid= FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+        Common.CurrentUserid = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         FirebaseFirestore.getInstance().collection("User").document(Common.CurrentUserid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

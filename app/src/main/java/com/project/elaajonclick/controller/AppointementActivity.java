@@ -1,4 +1,4 @@
-package com.mhutshow.elaajonclick.controller;
+package com.project.elaajonclick.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.mhutshow.elaajonclick.model.Hour;
+import com.project.elaajonclick.model.Hour;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -36,7 +36,7 @@ public class AppointementActivity extends AppCompatActivity {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(140, 398);
         layoutParams.setMargins(200, 0, 300, 0);
 
-        for (int i = 8; i<19;i++){
+        for (int i = 8; i < 19; i++) {
             final int j = i;
             TextView text = new TextView(this);
             text.setText(i + ":00");
@@ -44,20 +44,19 @@ public class AppointementActivity extends AppCompatActivity {
             l.setMinimumHeight(250);
             l.addView(text, layoutParams);
             final Button btn = new Button(this);
-            addRequest.document(i+"").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            addRequest.document(i + "").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     Hour note = documentSnapshot.toObject(Hour.class);
-                    if(note != null){
+                    if (note != null) {
                         btn.setText("already choosen");
-                    }
-                    else{
+                    } else {
                         btn.setText("confirme this hour");
                         btn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Hour h =new Hour(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
-                                addRequest.document(j+"").set(h);
+                                Hour h = new Hour(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                                addRequest.document(j + "").set(h);
                             }
                         });
                     }

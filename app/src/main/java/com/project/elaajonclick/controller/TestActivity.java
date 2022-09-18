@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Common.Common;
 import com.project.elaajonclick.model.Common.NonSwipeViewPager;
 import com.project.elaajonclick.model.adapter.MyViewPagerAdapter;
+
 import com.shuhart.stepview.StepView;
 
 import java.util.ArrayList;
@@ -36,12 +38,12 @@ public class TestActivity extends AppCompatActivity {
     Button btn_next_step;
     Unbinder unbinder;
     LocalBroadcastManager localBroadcastManager;
-    private BroadcastReceiver buttonNextReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver buttonNextReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            if(step == 2){
-                Common.currentTimeSlot = intent.getIntExtra(Common.KEY_TIME_SLOT,-1);
+            if (step == 2) {
+                Common.currentTimeSlot = intent.getIntExtra(Common.KEY_TIME_SLOT, -1);
             }
             btn_next_step.setEnabled(true);
             setColorButton();
@@ -56,7 +58,7 @@ public class TestActivity extends AppCompatActivity {
 
         stepView = findViewById(R.id.step_view);
         viewPager = findViewById(R.id.view_pager);
-        btn_next_step  = findViewById(R.id.btn_next_step);
+        btn_next_step = findViewById(R.id.btn_next_step);
         btn_previous_step = findViewById(R.id.btn_previous_step);
 
         setupStepView();
@@ -76,15 +78,9 @@ public class TestActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                stepView.go(position,true);
-                if( position == 0)
-                    btn_previous_step.setEnabled(false);
-                else
-                    btn_previous_step.setEnabled(true);
-                if(position == 2)
-                    btn_next_step.setEnabled(false);
-                else
-                    btn_next_step.setEnabled(true);
+                stepView.go(position, true);
+                btn_previous_step.setEnabled(position != 0);
+                btn_next_step.setEnabled(position != 2);
 
 
                 setColorButton();
@@ -98,21 +94,20 @@ public class TestActivity extends AppCompatActivity {
         btn_next_step.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(step < 3 || step == 0 ){
-                    step++ ;
-                    Common.Currentaappointementatype=spinner.getSelectedItem().toString();
+                if (step < 3 || step == 0) {
+                    step++;
+                    Common.Currentaappointementatype = spinner.getSelectedItem().toString();
                     Log.e("Spinnr", Common.Currentaappointementatype);
 
-                    if(step==1){
-                        if(Common.CurreentDoctor != null) {
+                    if (step == 1) {
+                        if (Common.CurreentDoctor != null) {
                             Common.currentTimeSlot = -1;
                             Common.currentDate = Calendar.getInstance();
                             loadTimeSlotOfDoctor(Common.CurreentDoctor);
                         }
-                    }
-                    else if(step == 2){
-                       // if(Common.currentTimeSlot != -1)
-                            confirmeBooking();
+                    } else if (step == 2) {
+                        // if(Common.currentTimeSlot != -1)
+                        confirmeBooking();
                     }
                     viewPager.setCurrentItem(step);
                 }
@@ -123,8 +118,8 @@ public class TestActivity extends AppCompatActivity {
         btn_previous_step.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(step == 3 || step > 0 ){
-                    step-- ;
+                if (step == 3 || step > 0) {
+                    step--;
                     viewPager.setCurrentItem(step);
                 }
             }
@@ -132,7 +127,6 @@ public class TestActivity extends AppCompatActivity {
 
         loadTimeSlotOfDoctor("testdoc@testdoc.com");
     }
-
 
 
     private void confirmeBooking() {
@@ -143,7 +137,7 @@ public class TestActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        step = 0 ;
+        step = 0;
         localBroadcastManager.unregisterReceiver(buttonNextReceiver);
         super.onDestroy();
     }
@@ -154,16 +148,14 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void setColorButton() {
-        if(btn_previous_step.isEnabled()){
+        if (btn_previous_step.isEnabled()) {
             btn_previous_step.setBackgroundResource(R.color.design_default_color_primary_dark);
-        }
-        else{
+        } else {
             btn_previous_step.setBackgroundResource(R.color.colorAccent);
         }
-        if(btn_next_step.isEnabled()){
+        if (btn_next_step.isEnabled()) {
             btn_next_step.setBackgroundResource(R.color.design_default_color_primary_dark);
-        }
-        else{
+        } else {
             btn_next_step.setBackgroundResource(R.color.colorAccent);
         }
     }

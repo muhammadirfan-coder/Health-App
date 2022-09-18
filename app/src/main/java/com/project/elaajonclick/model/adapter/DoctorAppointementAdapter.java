@@ -11,10 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.elaajonclick.controller.ChatActivity;
+
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.ApointementInformation;
 import com.project.elaajonclick.model.Doctor;
 import com.project.elaajonclick.model.Patient;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,11 +33,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<ApointementInformation, DoctorAppointementAdapter.MyDoctorAppointementHolder> {
-    StorageReference pathReference ;
+    StorageReference pathReference;
 
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.
+     *
      * @param options
      */
     public DoctorAppointementAdapter(@NonNull FirestoreRecyclerOptions<ApointementInformation> options) {
@@ -51,26 +55,26 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
             public void onClick(View v) {
                 apointementInformation.setType("Accepted");
                 FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
-                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
-                FirebaseFirestore.getInstance().document(apointementInformation.getChemin()).update("type","Accepted");
+                        .document(apointementInformation.getTime().replace("/", "_")).set(apointementInformation);
+                FirebaseFirestore.getInstance().document(apointementInformation.getChemin()).update("type", "Accepted");
                 FirebaseFirestore.getInstance().collection("Doctor").document(apointementInformation.getDoctorId()).collection("calendar")
-                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
+                        .document(apointementInformation.getTime().replace("/", "_")).set(apointementInformation);
 
 //////////// here add patient friend to doctor
 
-                FirebaseFirestore.getInstance().document("Patient/"+apointementInformation.getPatientId()).get()
+                FirebaseFirestore.getInstance().document("Patient/" + apointementInformation.getPatientId()).get()
                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                FirebaseFirestore.getInstance().collection("Doctor").document(apointementInformation.getDoctorId()+"")
+                                FirebaseFirestore.getInstance().collection("Doctor").document(apointementInformation.getDoctorId() + "")
                                         .collection("MyPatients").document(apointementInformation.getPatientId()).set(documentSnapshot.toObject(Patient.class));
                             }
                         });
-                FirebaseFirestore.getInstance().document("Doctor/"+apointementInformation.getDoctorId()).get()
+                FirebaseFirestore.getInstance().document("Doctor/" + apointementInformation.getDoctorId()).get()
                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()+"")
+                                FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId() + "")
                                         .collection("MyDoctors").document(apointementInformation.getPatientId()).set(documentSnapshot.toObject(Doctor.class));
                             }
                         });
@@ -84,14 +88,14 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
             public void onClick(View v) {
                 apointementInformation.setType("Refused");
                 FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
-                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
+                        .document(apointementInformation.getTime().replace("/", "_")).set(apointementInformation);
                 FirebaseFirestore.getInstance().document(apointementInformation.getChemin()).delete();
                 getSnapshots().getSnapshot(position).getReference().delete();
             }
         });
 
-        String imageId = apointementInformation.getPatientId()+".jpg"; //add a title image
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
+        String imageId = apointementInformation.getPatientId() + ".jpg"; //add a title image
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId); //storage the image
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -113,10 +117,10 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
 
     }
 
-    private void openPage(Context wf, Doctor d){
+    private void openPage(Context wf, Doctor d) {
         Intent i = new Intent(wf, ChatActivity.class);
-        i.putExtra("key1",d.getEmail()+"_"+ FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
-        i.putExtra("key2",FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()+"_"+d.getEmail());
+        i.putExtra("key1", d.getEmail() + "_" + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        i.putExtra("key2", FirebaseAuth.getInstance().getCurrentUser().getEmail() + "_" + d.getEmail());
         wf.startActivity(i);
     }
 
@@ -127,7 +131,7 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
         return new MyDoctorAppointementHolder(v);
     }
 
-    class MyDoctorAppointementHolder extends RecyclerView.ViewHolder{
+    class MyDoctorAppointementHolder extends RecyclerView.ViewHolder {
         //Here we hold the MyDoctorAppointementItems
         TextView dateAppointement;
         TextView patientName;
@@ -135,6 +139,7 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
         Button cancelBtn;
         TextView appointementType;
         ImageView patient_image;
+
         public MyDoctorAppointementHolder(@NonNull View itemView) {
             super(itemView);
             dateAppointement = itemView.findViewById(R.id.appointement_date);
@@ -145,8 +150,6 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
             patient_image = itemView.findViewById(R.id.patient_image);
         }
     }
-
-
 
 
 }

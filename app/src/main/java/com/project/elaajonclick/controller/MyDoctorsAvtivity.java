@@ -3,8 +3,10 @@ package com.project.elaajonclick.controller;
 import android.os.Bundle;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.adapter.MyDoctorsAdapter;
 import com.project.elaajonclick.model.Doctor;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -16,8 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyDoctorsAvtivity extends AppCompatActivity {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference myDoctorsRef = db.collection("Patient");
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference myDoctorsRef = db.collection("Patient");
     private MyDoctorsAdapter adapter;
 
     @Override
@@ -28,10 +30,10 @@ public class MyDoctorsAvtivity extends AppCompatActivity {
         setUpRecyclerView();
     }
 
-    public void setUpRecyclerView(){
+    public void setUpRecyclerView() {
         //Get the doctors by patient id
-        final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-        Query query = myDoctorsRef.document(""+patientID+"")
+        final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Query query = myDoctorsRef.document("" + patientID + "")
                 .collection("MyDoctors").orderBy("name", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Doctor> options = new FirestoreRecyclerOptions.Builder<Doctor>()

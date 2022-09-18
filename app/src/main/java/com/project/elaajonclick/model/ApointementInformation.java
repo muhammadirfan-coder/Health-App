@@ -1,7 +1,7 @@
 package com.project.elaajonclick.model;
 
 public class ApointementInformation {
-    private  String patientName,time,doctorId,doctorName,patientId,type,apointementType,chemin;
+    private String patientName, time, doctorId, doctorName, patientId, type, apointementType, chemin;
     private long slot;
 
     public String getApointementType() {
@@ -36,7 +36,7 @@ public class ApointementInformation {
         this.patientId = patientId;
     }
 
-    public ApointementInformation(){
+    public ApointementInformation() {
     }
 
     public ApointementInformation(String patientName, String time, String doctorId, String doctorName, long slot) {

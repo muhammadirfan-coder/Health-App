@@ -1,10 +1,11 @@
 package com.project.elaajonclick.model;
 
 public class Request {
-    private  String id_patient;
+    private String id_patient;
     private String id_doctor;
     private String hour_path;
-    public Request(){
+
+    public Request() {
 
     }
 

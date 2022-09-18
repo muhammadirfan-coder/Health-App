@@ -12,7 +12,7 @@ public class Fiche {
     private Date dateCreated;
     private String doctor;
 
-    public Fiche(){
+    public Fiche() {
 
     }
 
@@ -57,7 +57,9 @@ public class Fiche {
     }
 
     @ServerTimestamp
-    public Date getDateCreated() { return dateCreated; }
+    public Date getDateCreated() {
+        return dateCreated;
+    }
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;

@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.adapter.PatRequestAdapter;
 import com.project.elaajonclick.model.Request;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -18,8 +20,8 @@ import com.google.firebase.firestore.Query;
 
 public class PatientRequestPage extends AppCompatActivity {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference addRef = db.collection("Request");
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference addRef = db.collection("Request");
 
     private PatRequestAdapter adapter;
 
@@ -32,8 +34,8 @@ public class PatientRequestPage extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        final String idDoc = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-        Query query = addRef.whereEqualTo("id_doctor",idDoc+"").orderBy("id_patient", Query.Direction.DESCENDING);
+        final String idDoc = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Query query = addRef.whereEqualTo("id_doctor", idDoc + "").orderBy("id_patient", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Request> options = new FirestoreRecyclerOptions.Builder<Request>()
                 .setQuery(query, Request.class)

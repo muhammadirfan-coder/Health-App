@@ -12,15 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.elaajonclick.controller.FicheInfo;
+
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Fiche;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class ConsultationAdapter  extends FirestoreRecyclerAdapter<Fiche,ConsultationAdapter.FicheHolder>{
+public class ConsultationAdapter extends FirestoreRecyclerAdapter<Fiche, ConsultationAdapter.FicheHolder> {
 
     public ConsultationAdapter(@NonNull FirestoreRecyclerOptions<Fiche> options) {
         super(options);
@@ -53,11 +56,11 @@ public class ConsultationAdapter  extends FirestoreRecyclerAdapter<Fiche,Consult
         }
     }
 
-    private void openPage(Context wf,Fiche m){
+    private void openPage(Context wf, Fiche m) {
         Intent i = new Intent(wf, FicheInfo.class);
         i.putExtra("dateCreated", m.getDateCreated().toString());
-        i.putExtra("doctor",m.getDoctor());
-        i.putExtra("description",m.getDescription());
+        i.putExtra("doctor", m.getDoctor());
+        i.putExtra("description", m.getDescription());
         wf.startActivity(i);
     }
 
@@ -68,6 +71,7 @@ public class ConsultationAdapter  extends FirestoreRecyclerAdapter<Fiche,Consult
                 parent, false);
         return new FicheHolder(v);
     }
+
     class FicheHolder extends RecyclerView.ViewHolder {
         TextView doctor_name;
         TextView type;

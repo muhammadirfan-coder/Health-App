@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.ApointementInformation;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +35,7 @@ public class PatientAppointmentsAdapter extends FirestoreRecyclerAdapter<Apointe
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef;
     DocumentSnapshot documentSnapshot;
-    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
     public PatientAppointmentsAdapter(@NonNull FirestoreRecyclerOptions<ApointementInformation> options) {
         super(options);

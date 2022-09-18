@@ -9,7 +9,7 @@ public class Patient {
     private String situationFamiliale;
 
 
-    public Patient(){
+    public Patient() {
         //needed for firebase
     }
 

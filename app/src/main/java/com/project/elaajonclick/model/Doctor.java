@@ -7,7 +7,7 @@ public class Doctor {
     private String email;
     private String specialite;
 
-    public Doctor(){
+    public Doctor() {
         //needed for firebase
     }
 

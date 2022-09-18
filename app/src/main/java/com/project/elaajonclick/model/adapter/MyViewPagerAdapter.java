@@ -12,7 +12,6 @@ import com.project.elaajonclick.model.fragment.BookingStep3Fragment;
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
 
 
-
     public MyViewPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
@@ -20,7 +19,7 @@ public class MyViewPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch(position){
+        switch (position) {
             case 0:
                 return BookingStep1Fragment.getInstance();
             case 1:

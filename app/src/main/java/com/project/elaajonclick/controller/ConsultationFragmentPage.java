@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.adapter.ConsultationAdapter;
 import com.project.elaajonclick.model.Fiche;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,7 +22,7 @@ import com.google.firebase.firestore.Query;
 
 public class ConsultationFragmentPage extends Fragment {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference FicheRef;
     private ConsultationAdapter adapter;
     View result;

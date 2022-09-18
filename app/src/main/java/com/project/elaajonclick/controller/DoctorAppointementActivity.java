@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.adapter.DoctorAppointementAdapter;
 import com.project.elaajonclick.model.ApointementInformation;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -16,8 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DoctorAppointementActivity extends Activity {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference doctorAppointementRef = db.collection("Doctor");
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference doctorAppointementRef = db.collection("Doctor");
     private DoctorAppointementAdapter adapter;
 
     @Override
@@ -27,10 +29,10 @@ public class DoctorAppointementActivity extends Activity {
         setUpRecyclerView();
     }
 
-    public void setUpRecyclerView(){
+    public void setUpRecyclerView() {
         //Get the doctors by patient id
-        final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-        Query query = doctorAppointementRef.document(""+doctorID+"")
+        final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Query query = doctorAppointementRef.document("" + doctorID + "")
                 .collection("apointementrequest")
                 .orderBy("time", Query.Direction.DESCENDING);
 

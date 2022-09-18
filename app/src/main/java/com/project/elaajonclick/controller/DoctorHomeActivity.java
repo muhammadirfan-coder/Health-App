@@ -12,7 +12,9 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Common.Common;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
@@ -21,22 +23,24 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class DoctorHomeActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class DoctorHomeActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     static String doc;
     Button SignOutBtn2;
     Button BtnRequst;
     Button listPatients;
     Button appointementBtn;
+
     @OnClick(R.id.profile)
-    void profileBtnClick(){
+    void profileBtnClick() {
         Intent k = new Intent(DoctorHomeActivity.this, ProfileDoctorActivity.class);
         startActivity(k);
     }
+
     Unbinder unbinder;
 
     @OnClick(R.id.myCalendarBtn)
     void myCalendarOnclick() {
-        Toast.makeText(this,"clicked",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
         Intent k = new Intent(DoctorHomeActivity.this, MyCalendarDoctorActivity.class);
         startActivity(k);
     }
@@ -45,12 +49,12 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home); //ici layout de page d'acceuil MEDECIN
-        unbinder = ButterKnife.bind(this,this);
-        Common.CurreentDoctor = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+        unbinder = ButterKnife.bind(this, this);
+        Common.CurreentDoctor = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         Common.CurrentUserType = "doctor";
         listPatients = findViewById(R.id.listPatients);
-        BtnRequst=findViewById(R.id.btnRequst);
-        SignOutBtn2=findViewById(R.id.signOutBtn);
+        BtnRequst = findViewById(R.id.btnRequst);
+        SignOutBtn2 = findViewById(R.id.signOutBtn);
         appointementBtn = findViewById(R.id.appointement);
         SignOutBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +82,7 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
         appointementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              // doc = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+                // doc = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
                 //showDatePickerDialog(v.getContext());
                 Intent k = new Intent(DoctorHomeActivity.this, DoctorAppointementActivity.class);
                 startActivity(k);
@@ -87,7 +91,7 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
 
     }
 
-    public void showDatePickerDialog(Context wf){
+    public void showDatePickerDialog(Context wf) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 wf,
                 this,
@@ -100,14 +104,14 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = "month_day_year: " + month + "_" + dayOfMonth + "_" + year;
-        openPage(view.getContext(),doc,date);
+        openPage(view.getContext(), doc, date);
     }
 
-    private void openPage(Context wf, String d,String day){
+    private void openPage(Context wf, String d, String day) {
         Intent i = new Intent(wf, AppointementActivity.class);
-        i.putExtra("key1",d+"");
-        i.putExtra("key2",day);
-        i.putExtra("key3","doctor");
+        i.putExtra("key1", d + "");
+        i.putExtra("key2", day);
+        i.putExtra("key3", "doctor");
         wf.startActivity(i);
     }
 }

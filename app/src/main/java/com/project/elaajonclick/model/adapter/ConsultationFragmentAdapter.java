@@ -18,12 +18,12 @@ public class ConsultationFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return(2); // 3 - Number of page to show
+        return (2); // 3 - Number of page to show
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0: //Page number 1
                 return ConsultationFragmentPage.newInstance();
             case 1: //Page number 2
@@ -35,7 +35,7 @@ public class ConsultationFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
+        switch (position) {
             case 0: //Page number 1
                 return "Consultation";
             case 1: //Page number 2

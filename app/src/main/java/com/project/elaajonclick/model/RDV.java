@@ -48,7 +48,7 @@ public class RDV {
     }
 
     //Afficher l'etat de RDV
-    public void etatRDV(){
-        System.out.println("Le Rendez-vous "+getNoRDV()+" est en cours");
+    public void etatRDV() {
+        System.out.println("Le Rendez-vous " + getNoRDV() + " est en cours");
     }
 }

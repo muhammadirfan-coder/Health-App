@@ -25,7 +25,7 @@ public class NonSwipeViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return  false;
+        return false;
     }
 
     @Override
@@ -38,18 +38,18 @@ public class NonSwipeViewPager extends ViewPager {
             Class<?> viewPager = ViewPager.class;
             Field scroller = viewPager.getDeclaredField("mScroller");
             scroller.setAccessible(true);
-            scroller.set(this,new MyScroller(getContext()));
+            scroller.set(this, new MyScroller(getContext()));
 
-        }catch(NoSuchFieldException e){
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }
 
     private class MyScroller extends Scroller {
         public MyScroller(Context context) {
-            super(context,new DecelerateInterpolator());
+            super(context, new DecelerateInterpolator());
         }
 
         @Override

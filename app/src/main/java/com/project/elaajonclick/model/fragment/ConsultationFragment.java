@@ -33,9 +33,8 @@ public class ConsultationFragment extends Fragment {
         args.putInt(KEY_COLOR, color);
         frag.setArguments(args);
 
-        return(frag);
+        return (frag);
     }
-
 
 
     @Override
@@ -44,8 +43,8 @@ public class ConsultationFragment extends Fragment {
         // Inflate the layout for this fragment
         View result = inflater.inflate(R.layout.fragment_consultation, container, false);
         // 4 - Get widgets from layout and serialise it
-        LinearLayout rootView= (LinearLayout) result.findViewById(R.id.fragment_page_rootview);
-        TextView textView= (TextView) result.findViewById(R.id.fragment_page_title);
+        LinearLayout rootView = (LinearLayout) result.findViewById(R.id.fragment_page_rootview);
+        TextView textView = (TextView) result.findViewById(R.id.fragment_page_title);
 
         // 5 - Get data from Bundle (created in method newInstance)
         int position = getArguments().getInt(KEY_POSITION, -1);
@@ -53,9 +52,9 @@ public class ConsultationFragment extends Fragment {
 
         // 6 - Update widgets with it
         rootView.setBackgroundColor(color);
-        textView.setText("Page numéro "+position);
+        textView.setText("Page numéro " + position);
 
-        Log.e(getClass().getSimpleName(), "onCreateView called for fragment number "+position);
+        Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
 
         return result;
     }

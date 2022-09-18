@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Common.Common;
 import com.project.elaajonclick.model.Interface.ITimeSlotLoadListener;
 import com.project.elaajonclick.model.adapter.MyTimeSlotAdapter;
 import com.project.elaajonclick.model.TimeSlot;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -45,7 +47,7 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
     RecyclerView recycler_time_slot;
     @BindView(R.id.calendarView2)
     HorizontalCalendarView calendarView;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy");
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +63,18 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
         alertDialog = new SpotsDialog.Builder().setCancelable(false).setContext(this)
                 .build();
         Calendar date = Calendar.getInstance();
-        date.add(Calendar.DATE,0);
-        loadAvailabelTimeSlotOfDoctor(Common.CurreentDoctor,simpleDateFormat.format(date.getTime()));
+        date.add(Calendar.DATE, 0);
+        loadAvailabelTimeSlotOfDoctor(Common.CurreentDoctor, simpleDateFormat.format(date.getTime()));
         recycler_time_slot.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recycler_time_slot.setLayoutManager(gridLayoutManager);
 
         Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.DATE,0);
+        startDate.add(Calendar.DATE, 0);
         Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.DATE,5);
-        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this,R.id.calendarView2)
-                .range(startDate,endDate)
+        endDate.add(Calendar.DATE, 5);
+        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarView2)
+                .range(startDate, endDate)
                 .datesNumberOnScreen(1)
                 .mode(HorizontalCalendar.Mode.DAYS)
                 .defaultSelectedDate(startDate)
@@ -80,9 +82,9 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
-                if(Common.currentDate.getTimeInMillis() != date.getTimeInMillis()){
+                if (Common.currentDate.getTimeInMillis() != date.getTimeInMillis()) {
                     Common.currentDate = date;
-                    loadAvailabelTimeSlotOfDoctor(Common.CurreentDoctor,simpleDateFormat.format(date.getTime()));
+                    loadAvailabelTimeSlotOfDoctor(Common.CurreentDoctor, simpleDateFormat.format(date.getTime()));
 
                 }
 
@@ -92,7 +94,7 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
     }
 
     private void loadAvailabelTimeSlotOfDoctor(String curreentDoctor, String bookDate) {
-    alertDialog.show();
+        alertDialog.show();
 
         doctorDoc = FirebaseFirestore.getInstance()
                 .collection("Doctor")
@@ -100,11 +102,10 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
         doctorDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    if(documentSnapshot.exists()){
-                        CollectionReference date =FirebaseFirestore.getInstance()
+                    if (documentSnapshot.exists()) {
+                        CollectionReference date = FirebaseFirestore.getInstance()
                                 .collection("Doctor")
                                 .document(Common.CurreentDoctor)
                                 .collection(bookDate);
@@ -112,15 +113,13 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
                         date.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful())
-                                {
+                                if (task.isSuccessful()) {
                                     QuerySnapshot querySnapshot = task.getResult();
-                                    if (querySnapshot.isEmpty())
-                                    {
+                                    if (querySnapshot.isEmpty()) {
                                         iTimeSlotLoadListener.onTimeSlotLoadEmpty();
-                                    }else {
+                                    } else {
                                         List<TimeSlot> timeSlots = new ArrayList<>();
-                                        for (QueryDocumentSnapshot document:task.getResult())
+                                        for (QueryDocumentSnapshot document : task.getResult())
                                             timeSlots.add(document.toObject(TimeSlot.class));
                                         iTimeSlotLoadListener.onTimeSlotLoadSuccess(timeSlots);
                                     }
@@ -143,14 +142,14 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
 
     @Override
     public void onTimeSlotLoadSuccess(List<TimeSlot> timeSlotList) {
-        MyTimeSlotAdapter adapter = new MyTimeSlotAdapter(this,timeSlotList);
+        MyTimeSlotAdapter adapter = new MyTimeSlotAdapter(this, timeSlotList);
         recycler_time_slot.setAdapter(adapter);
         alertDialog.dismiss();
     }
 
     @Override
     public void onTimeSlotLoadFailed(String message) {
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         alertDialog.dismiss();
     }
 

@@ -15,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.Common.Common;
 import com.project.elaajonclick.model.adapter.ConsultationFragmentAdapter;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,10 +40,10 @@ public class DossierMedical extends AppCompatActivity {
     private Button infobtn;
     private String patient_name;
     private String patient_phone;
-    final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+    final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference patRef = db.collection("Patient").document("" + patientID + "");
-    StorageReference pathReference ;
+    StorageReference pathReference;
 
 
     @Override
@@ -62,10 +64,10 @@ public class DossierMedical extends AppCompatActivity {
                 openPatientFiche();
             }
         });
-        if(Common.CurrentUserType.equals("patient")){
+        if (Common.CurrentUserType.equals("patient")) {
             createNewFicheButton.setVisibility(View.GONE);
         }
-        infobtn= findViewById(R.id.infobtn);
+        infobtn = findViewById(R.id.infobtn);
         infobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +75,8 @@ public class DossierMedical extends AppCompatActivity {
             }
         });
 
-        String imageId = patient_email+".jpg"; //add a title image
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
+        String imageId = patient_email + ".jpg"; //add a title image
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId); //storage the image
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -98,10 +100,10 @@ public class DossierMedical extends AppCompatActivity {
     }
 
     //Receive patient informations from the previous activity
-    private void getIncomingIntent(){
+    private void getIncomingIntent() {
         Log.d(TAG, "getIncomingIntent: checking for incoming intents");
         //Check if the incoming intents exist
-        if(getIntent().hasExtra("patient_name") && getIntent().hasExtra("patient_email")){
+        if (getIntent().hasExtra("patient_name") && getIntent().hasExtra("patient_email")) {
             Log.d(TAG, "getIncomingIntent: found intent extras.");
             patient_name = getIntent().getStringExtra("patient_name");
             patient_email = getIntent().getStringExtra("patient_email");
@@ -109,7 +111,7 @@ public class DossierMedical extends AppCompatActivity {
 
             //set patient name, email, phone number
             setPatientInfos(patient_name, patient_email, patient_phone);
-        }else{
+        } else {
             Log.d(TAG, "No intent");
             patRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
                 @Override
@@ -125,11 +127,10 @@ public class DossierMedical extends AppCompatActivity {
         }
 
 
-
     }
 
     //Add patient name, email, phone number to the medical folder
-    private void setPatientInfos(String patient_name, String patient_email, String patient_phone){
+    private void setPatientInfos(String patient_name, String patient_email, String patient_phone) {
         Log.d(TAG, "setPatientInfos: put patient infos");
 
         TextView name = findViewById(R.id.patient_name);
@@ -140,7 +141,6 @@ public class DossierMedical extends AppCompatActivity {
 
         TextView number = findViewById(R.id.phone_number);
         number.setText(patient_phone);
-
 
 
     }
@@ -163,7 +163,7 @@ public class DossierMedical extends AppCompatActivity {
 
     }
 
-    private void openPatientFiche(){
+    private void openPatientFiche() {
         Intent intent = new Intent(this, FicheActivity.class);
         String patient_name = getIntent().getStringExtra("patient_name");
         String patient_email = getIntent().getStringExtra("patient_email");
@@ -172,7 +172,7 @@ public class DossierMedical extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void openPatientInfo(){
+    private void openPatientInfo() {
         Intent intent = new Intent(this, PatientInfoActivity.class);
         String patient_name = getIntent().getStringExtra("patient_name");
         String patient_email = getIntent().getStringExtra("patient_email");

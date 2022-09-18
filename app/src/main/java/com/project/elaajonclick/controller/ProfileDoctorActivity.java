@@ -38,8 +38,8 @@ public class ProfileDoctorActivity extends AppCompatActivity {
     private MaterialTextView doctorAddress;
     private MaterialTextView doctorAbout;
     private ImageView doctorImage;
-    StorageReference pathReference ;
-    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+    StorageReference pathReference;
+    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef = db.collection("Doctor").document("" + doctorID + "");
 
@@ -61,8 +61,8 @@ public class ProfileDoctorActivity extends AppCompatActivity {
 
 
         //display profile image
-        String imageId = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId+".jpg");
+        String imageId = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId + ".jpg");
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {

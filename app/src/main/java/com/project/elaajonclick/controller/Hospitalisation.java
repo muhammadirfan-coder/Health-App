@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.elaajonclick.R;
+
 import com.project.elaajonclick.model.adapter.HospitalisationAdapter;
 import com.project.elaajonclick.model.Fiche;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,7 +22,7 @@ import com.google.firebase.firestore.Query;
 
 public class Hospitalisation extends Fragment {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference FicheRef;
     private HospitalisationAdapter adapter;
     View result;
@@ -44,6 +46,7 @@ public class Hospitalisation extends Fragment {
         setUpRecyclerView();
         return result;
     }
+
     private void setUpRecyclerView() {
         String email_id = getActivity().getIntent().getExtras().getString("patient_email");
         FicheRef = db.collection("Patient").document(email_id).collection("MyMedicalFolder");
