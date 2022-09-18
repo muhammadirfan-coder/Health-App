@@ -35,7 +35,8 @@
         <activity android:name="com.project.elaajonclick.controller.SearchPatActivity" />
         <activity android:name="com.project.elaajonclick.controller.FirstSigninActivity" />
         <activity android:name="com.project.elaajonclick.controller.HomeActivity" />
-        <activity android:name="com.project.elaajonclick.controller.MainActivity"
+        <activity android:name="com.project.elaajonclick.controller.MainActivity"/>
+        <activity android:name=".controller.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +44,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <meta-data
             android:name="preloaded_fonts"

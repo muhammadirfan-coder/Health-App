@@ -36,6 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:text="Welcome User"
             android:textColor="#ffffff"
             android:textSize="26sp" />
@@ -44,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose an option"
+            android:textAlignment="center"
             android:textColor="#ffffff"
             android:textSize="16sp" />
     </LinearLayout>
@@ -89,7 +91,7 @@
         android:layout_marginTop="220dp"
         android:layout_marginBottom="98dp"
         android:background="@drawable/button_home"
-        android:text="Appointement"
+        android:text="Appointment"
         android:textColor="#22BE87"
         android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/signOutBtn"

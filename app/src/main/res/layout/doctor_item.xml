@@ -77,6 +77,7 @@
             android:layout_marginBottom="22dp"
             android:background="@drawable/button_green"
             android:text="BOOK"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            tools:ignore="TouchTargetSizeCheck" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

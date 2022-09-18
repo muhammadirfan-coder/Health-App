@@ -65,7 +65,8 @@
             android:layout_marginStart="365dp"
             android:layout_marginLeft="365dp"
             android:layout_marginBottom="23dp"
-            android:background="@drawable/ic_chat_black_24dp" />
+            android:background="@drawable/ic_chat_black_24dp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/callBtn"
@@ -77,6 +78,7 @@
             android:layout_marginStart="316dp"
             android:layout_marginLeft="316dp"
             android:layout_marginBottom="23dp"
-            android:background="@drawable/ic_call_black_24dp" />
+            android:background="@drawable/ic_call_black_24dp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
