@@ -85,7 +85,7 @@ public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFilt
                 // Handle any errors
             }
         });
-        doctoreHolder.specialite.setText("Specialite : " + doctor.getSpecialite());
+        doctoreHolder.specialite.setText("Speciality : " + doctor.getSpecialite());
         final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         final String idDoc = doctor.getEmail();
         // doctoreHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));

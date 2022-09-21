@@ -157,9 +157,9 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="33dp"
                 android:layout_marginRight="33dp"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/button_radius_primary_color"
-                android:text="Voir fiche"
+                android:text="see file"
 
                 android:textSize="10sp" />
 

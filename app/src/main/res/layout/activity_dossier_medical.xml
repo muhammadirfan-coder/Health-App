@@ -65,9 +65,11 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_gravity="bottom|end"
-            android:layout_margin="14dp"
-            android:layout_marginEnd="54dp"
-            android:layout_marginRight="54dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="14dp"
             android:clickable="true"
             android:scaleType="center"
             app:backgroundTint="@color/colorPrimaryDark"
@@ -83,11 +85,11 @@
             android:layout_marginStart="14dp"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="13dp"
-            android:layout_marginEnd="102dp"
-            android:layout_marginRight="102dp"
+            android:layout_marginEnd="82dp"
+            android:layout_marginRight="86dp"
             android:background="@drawable/ic_assignment_ind_black_24dp"
             android:clickable="true"
-            android:scaleType="center"/>
+            android:scaleType="center" />
 
 
     </RelativeLayout>

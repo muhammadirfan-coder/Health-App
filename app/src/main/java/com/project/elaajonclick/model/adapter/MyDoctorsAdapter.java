@@ -43,7 +43,7 @@ public class MyDoctorsAdapter extends FirestoreRecyclerAdapter<Doctor, MyDoctors
     @Override
     protected void onBindViewHolder(@NonNull MyDoctorAppointementHolder myDoctorsHolder, int position, @NonNull final Doctor doctor) {
         myDoctorsHolder.textViewTitle.setText(doctor.getName());
-        myDoctorsHolder.textViewDescription.setText("Specialite : " + doctor.getSpecialite());
+        myDoctorsHolder.textViewDescription.setText("Speciality : " + doctor.getSpecialite());
         myDoctorsHolder.sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

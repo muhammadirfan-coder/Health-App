@@ -40,7 +40,7 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
 
     @OnClick(R.id.myCalendarBtn)
     void myCalendarOnclick() {
-        Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
         Intent k = new Intent(DoctorHomeActivity.this, MyCalendarDoctorActivity.class);
         startActivity(k);
     }

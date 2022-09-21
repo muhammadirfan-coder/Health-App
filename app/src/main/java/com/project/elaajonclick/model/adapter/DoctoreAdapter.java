@@ -43,7 +43,7 @@ public class DoctoreAdapter extends FirestoreRecyclerAdapter<Doctor, DoctoreAdap
     protected void onBindViewHolder(@NonNull final DoctoreHolder doctoreHolder, int i, @NonNull final Doctor doctor) {
         final TextView t = doctoreHolder.title;
         doctoreHolder.title.setText(doctor.getName());
-        doctoreHolder.specialite.setText("Specialite : " + doctor.getSpecialite());
+        doctoreHolder.specialite.setText("Speciality : " + doctor.getSpecialite());
         final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         final String idDoc = doctor.getEmail();
         // doctoreHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));

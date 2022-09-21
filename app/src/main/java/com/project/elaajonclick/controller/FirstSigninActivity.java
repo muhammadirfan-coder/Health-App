@@ -82,11 +82,11 @@ public class FirstSigninActivity extends AppCompatActivity {
                 specialite = specialiteList.getSelectedItem().toString();
                 UserHelper.addUser(fullname, birtDay, tel, type);
                 if (type.equals("Patient")) {
-                    PatientHelper.addPatient(fullname, "adress", tel);
+                    PatientHelper.addPatient(fullname, "address", tel);
                     System.out.println("Add patient " + fullname + " to patient collection");
 
                 } else {
-                    DoctorHelper.addDoctor(fullname, "adress", tel, specialite);
+                    DoctorHelper.addDoctor(fullname, "address", tel, specialite);
                 }
                 Intent k = new Intent(FirstSigninActivity.this, MainActivity.class);
                 startActivity(k);

@@ -69,6 +69,14 @@ Chat with a mentor</string>
         <item>Pediatrician</item>
         <item>Radiologist</item>
         <item>Pathologist</item>
+        <item>Neurologist</item>
+        <item>Psychiatrist</item>
+        <item>Gynecologist</item>
+        <item>Urologist</item>
+        <item>Surgeon</item>
+        <item>Dermatologist</item>
+        <item>Orthopedics</item>
+        <item>Nephrologist</item>
     </string-array>
 
     <string-array name="blood_spinner">
