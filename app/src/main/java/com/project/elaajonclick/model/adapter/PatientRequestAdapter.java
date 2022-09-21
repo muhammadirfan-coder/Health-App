@@ -27,11 +27,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import static androidx.core.content.ContextCompat.startActivities;
 
-public class PatRequestAdapter extends FirestoreRecyclerAdapter<Request, PatRequestAdapter.PatientRequestHolder> {
+public class PatientRequestAdapter extends FirestoreRecyclerAdapter<Request, PatientRequestAdapter.PatientRequestHolder> {
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
     static CollectionReference addRequest = db.collection("Request");
 
-    public PatRequestAdapter(@NonNull FirestoreRecyclerOptions<Request> options) {
+    public PatientRequestAdapter(@NonNull FirestoreRecyclerOptions<Request> options) {
         super(options);
     }
 

@@ -23,7 +23,7 @@
             android:background="@color/colorAccent">
 
             <TextView
-                android:id="@+id/appointement_month"
+                android:id="@+id/appointment_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="July"
@@ -34,7 +34,7 @@
                 android:layout_marginTop="16dp"/>
 
             <TextView
-                android:id="@+id/appointement_day"
+                android:id="@+id/appointment_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -46,7 +46,7 @@
                 android:textSize="28sp" />
 
             <TextView
-                android:id="@+id/appointement_day_name"
+                android:id="@+id/appointment_day_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
@@ -146,7 +146,7 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/voir_fiche_btn2"
+                android:id="@+id/cure_type_btn2"
                 android:layout_width="72dp"
                 android:layout_height="26dp"
                 android:layout_alignParentEnd="true"

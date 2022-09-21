@@ -114,7 +114,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
                 intent.putExtra(Common.KEY_STEP, 2);
                 Log.e("pos ", "onItemSelectedListener: " + position);
                 localBroadcastManager.sendBroadcast(intent);
-                if (Common.CurrentUserType == "doctor" && holder.txt_time_slot_description.getText().equals("Available")) {
+                if (Common.currentUserType == "doctor" && holder.txt_time_slot_description.getText().equals("Available")) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(holder.card_time_slot.getContext());
                     alert.setTitle("Block");
                     alert.setMessage("Are you sure you want to block?");
@@ -123,10 +123,10 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
                         public void onClick(DialogInterface dialog, int which) {
 
                             AppointmentInformation appointmentInformation = new AppointmentInformation();
-                            appointmentInformation.setAppointmentType(Common.CurrentAppointmentType);
-                            appointmentInformation.setDoctorId(Common.CurrentDoctor);
-                            appointmentInformation.setDoctorName(Common.CurrentDoctorName);
-                            appointmentInformation.setPath("Doctor/" + Common.CurrentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
+                            appointmentInformation.setAppointmentType(Common.currentAppointmentType);
+                            appointmentInformation.setDoctorId(Common.currentDoctor);
+                            appointmentInformation.setDoctorName(Common.currentDoctorName);
+                            appointmentInformation.setPath("Doctor/" + Common.currentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
                             appointmentInformation.setType("full");
                             appointmentInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
                                     .append("at")
@@ -135,7 +135,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
 
                             DocumentReference bookingDate = FirebaseFirestore.getInstance()
                                     .collection("Doctor")
-                                    .document(Common.CurrentDoctor)
+                                    .document(Common.currentDoctor)
                                     .collection(Common.simpleFormat.format(Common.currentDate.getTime()))
                                     .document(String.valueOf(Common.currentTimeSlot));
 

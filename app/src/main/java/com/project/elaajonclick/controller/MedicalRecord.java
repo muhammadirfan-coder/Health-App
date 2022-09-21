@@ -64,7 +64,7 @@ public class MedicalRecord extends AppCompatActivity {
                 openPatientCureType();
             }
         });
-        if (Common.CurrentUserType.equals("patient")) {
+        if (Common.currentUserType.equals("patient")) {
             createNewFicheButton.setVisibility(View.GONE);
         }
         infoBtn = findViewById(R.id.infobtn);

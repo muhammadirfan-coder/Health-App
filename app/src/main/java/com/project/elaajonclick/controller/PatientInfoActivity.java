@@ -71,7 +71,7 @@ public class PatientInfoActivity extends AppCompatActivity {
 
             }
         });
-        if (Common.CurrentUserType.equals("doctor")) {
+        if (Common.currentUserType.equals("doctor")) {
             updateBtn.setVisibility(View.GONE);
             heightBtn.setEnabled(false);
             weightBtn.setEnabled(false);

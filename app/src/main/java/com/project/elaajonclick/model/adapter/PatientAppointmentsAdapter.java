@@ -34,8 +34,6 @@ public class PatientAppointmentsAdapter extends FirestoreRecyclerAdapter<Appoint
     StorageReference pathReference;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef;
-    DocumentSnapshot documentSnapshot;
-    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
     public PatientAppointmentsAdapter(@NonNull FirestoreRecyclerOptions<AppointmentInformation> options) {
         super(options);
@@ -56,7 +54,7 @@ public class PatientAppointmentsAdapter extends FirestoreRecyclerAdapter<Appoint
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
                 patientAppointmentsHolder.phone.setText(document.getString("tel"));
-                Log.d("telephone num", document.getString("tel"));
+                Log.d("telephone number", document.getString("tel"));
             }
         });
 

@@ -112,7 +112,7 @@ public class MyDoctorsAdapter extends FirestoreRecyclerAdapter<Doctor, MyDoctors
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.doctor_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
-            textViewStatus = itemView.findViewById(R.id.onlineStatut);
+            textViewStatus = itemView.findViewById(R.id.onlineStatus);
             imageViewDoctor = itemView.findViewById(R.id.doctor_item_image);
             sendMessageButton = itemView.findViewById(R.id.see_file_btn);
             callBtn = itemView.findViewById(R.id.callBtn);

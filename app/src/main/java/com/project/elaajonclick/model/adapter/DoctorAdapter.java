@@ -67,7 +67,7 @@ public class DoctorAdapter extends FirestoreRecyclerAdapter<Doctor, DoctorAdapte
             @Override
             public void onClick(View v) {
                 doc = doctor.getEmail();
-                Common.CurrentDoctor = doctor.getEmail();
+                Common.currentDoctor = doctor.getEmail();
                 openPage(v.getContext());
 
             }
@@ -91,7 +91,6 @@ public class DoctorAdapter extends FirestoreRecyclerAdapter<Doctor, DoctorAdapte
         TextView speciality;
         ImageView image;
         Button addDoc;
-        Button load;
 
         public DoctorHolder(@NonNull View itemView) {
             super(itemView);

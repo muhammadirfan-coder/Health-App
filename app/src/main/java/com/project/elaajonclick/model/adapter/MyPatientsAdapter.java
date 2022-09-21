@@ -47,7 +47,7 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
     @Override
     protected void onBindViewHolder(@NonNull final MyPatientsHolder myPatientsHolder, int position, @NonNull final Patient patient) {
         myPatientsHolder.textViewTitle.setText(patient.getName());
-        myPatientsHolder.textViewTelephone.setText("Tél : " + patient.getTel());
+        myPatientsHolder.textViewTelephone.setText("Tel : " + patient.getTel());
         myPatientsHolder.contactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

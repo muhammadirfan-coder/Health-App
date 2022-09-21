@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import com.project.elaajonclick.R;
 
-import com.project.elaajonclick.model.adapter.PatRequestAdapter;
+import com.project.elaajonclick.model.adapter.PatientRequestAdapter;
 import com.project.elaajonclick.model.Request;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -23,7 +23,7 @@ public class PatientRequestPage extends AppCompatActivity {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference addRef = db.collection("Request");
 
-    private PatRequestAdapter adapter;
+    private PatientRequestAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class PatientRequestPage extends AppCompatActivity {
                 .setQuery(query, Request.class)
                 .build();
 
-        adapter = new PatRequestAdapter(options);
+        adapter = new PatientRequestAdapter(options);
 
         RecyclerView recyclerView = findViewById(R.id.RequestDocRecycle);
         recyclerView.setHasFixedSize(true);

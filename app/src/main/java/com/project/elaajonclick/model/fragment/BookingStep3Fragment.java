@@ -56,12 +56,12 @@ public class BookingStep3Fragment extends Fragment {
     @OnClick(R.id.btn_confirm)
     void confirmAppointment() {
         AppointmentInformation appointmentInformation = new AppointmentInformation();
-        appointmentInformation.setAppointmentType(Common.CurrentAppointmentType);
-        appointmentInformation.setDoctorId(Common.CurrentDoctor);
-        appointmentInformation.setDoctorName(Common.CurrentDoctorName);
-        appointmentInformation.setPatientName(Common.CurrentUserName);
-        appointmentInformation.setPatientId(Common.CurrentUserid);
-        appointmentInformation.setPath("Doctor/" + Common.CurrentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
+        appointmentInformation.setAppointmentType(Common.currentAppointmentType);
+        appointmentInformation.setDoctorId(Common.currentDoctor);
+        appointmentInformation.setDoctorName(Common.currentDoctorName);
+        appointmentInformation.setPatientName(Common.currentUserName);
+        appointmentInformation.setPatientId(Common.currentUserID);
+        appointmentInformation.setPath("Doctor/" + Common.currentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
         appointmentInformation.setType("Checked");
         appointmentInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
                 .append("at")
@@ -70,7 +70,7 @@ public class BookingStep3Fragment extends Fragment {
 
         DocumentReference bookingDate = FirebaseFirestore.getInstance()
                 .collection("Doctor")
-                .document(Common.CurrentDoctor)
+                .document(Common.currentDoctor)
                 .collection(Common.simpleFormat.format(Common.currentDate.getTime()))
                 .document(String.valueOf(Common.currentTimeSlot));
 
@@ -92,7 +92,7 @@ public class BookingStep3Fragment extends Fragment {
                 }).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        FirebaseFirestore.getInstance().collection("Doctor").document(Common.CurrentDoctor)
+                        FirebaseFirestore.getInstance().collection("Doctor").document(Common.currentDoctor)
                                 .collection("appointmentRequest").document(appointmentInformation.getTime().replace("/", "_")).set(appointmentInformation);
                         FirebaseFirestore.getInstance().collection("Patient").document(appointmentInformation.getPatientId()).collection("calendar")
                                 .document(appointmentInformation.getTime().replace("/", "_")).set(appointmentInformation);
@@ -114,12 +114,12 @@ public class BookingStep3Fragment extends Fragment {
 
 
     private void setData() {
-        txt_booking_berber_text.setText(Common.CurrentDoctorName);
+        txt_booking_berber_text.setText(Common.currentDoctorName);
         txt_booking_time_text.setText(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
                 .append("at")
                 .append(simpleDateFormat.format(Common.currentDate.getTime())));
-        txt_booking_phone.setText(Common.CurrentPhone);
-        txt_booking_type.setText(Common.CurrentAppointmentType);
+        txt_booking_phone.setText(Common.currentPhone);
+        txt_booking_type.setText(Common.currentAppointmentType);
     }
 
     public BookingStep3Fragment() {

@@ -82,11 +82,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        Common.CurrentUserid = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        FirebaseFirestore.getInstance().collection("User").document(Common.CurrentUserid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        Common.currentUserID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        FirebaseFirestore.getInstance().collection("User").document(Common.currentUserID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Common.CurrentUserName = documentSnapshot.getString("name");
+                Common.currentUserName = documentSnapshot.getString("name");
             }
         });
 

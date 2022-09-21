@@ -70,7 +70,7 @@ public class BookingStep2Fragment extends Fragment implements ITimeSlotLoadListe
         public void onReceive(Context context, Intent intent) {
             Calendar date = Calendar.getInstance();
             date.add(Calendar.DATE, 0);
-            loadAvailableTimeSlotOfDoctor(Common.CurrentDoctor, simpleDateFormat.format(date.getTime()));
+            loadAvailableTimeSlotOfDoctor(Common.currentDoctor, simpleDateFormat.format(date.getTime()));
 
         }
     };
@@ -80,7 +80,7 @@ public class BookingStep2Fragment extends Fragment implements ITimeSlotLoadListe
 
         doctorDoc = FirebaseFirestore.getInstance()
                 .collection("Doctor")
-                .document(Common.CurrentDoctor);
+                .document(Common.currentDoctor);
         doctorDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -89,7 +89,7 @@ public class BookingStep2Fragment extends Fragment implements ITimeSlotLoadListe
                     if (documentSnapshot.exists()) {
                         CollectionReference date = FirebaseFirestore.getInstance()
                                 .collection("Doctor")
-                                .document(Common.CurrentDoctor)
+                                .document(Common.currentDoctor)
                                 .collection(bookDate);
 
                         date.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -156,7 +156,7 @@ public class BookingStep2Fragment extends Fragment implements ITimeSlotLoadListe
         unbinder = ButterKnife.bind(this, itemView);
 
         init(itemView);
-        loadAvailableTimeSlotOfDoctor(Common.CurrentDoctor, simpleDateFormat.format(Common.currentDate.getTime()));
+        loadAvailableTimeSlotOfDoctor(Common.currentDoctor, simpleDateFormat.format(Common.currentDate.getTime()));
 
         return itemView;
 
@@ -183,7 +183,7 @@ public class BookingStep2Fragment extends Fragment implements ITimeSlotLoadListe
             public void onDateSelected(Calendar date, int position) {
                 if (Common.currentDate.getTimeInMillis() != date.getTimeInMillis()) {
                     Common.currentDate = date;
-                    loadAvailableTimeSlotOfDoctor(Common.CurrentDoctor, simpleDateFormat.format(date.getTime()));
+                    loadAvailableTimeSlotOfDoctor(Common.currentDoctor, simpleDateFormat.format(date.getTime()));
 
                 }
 

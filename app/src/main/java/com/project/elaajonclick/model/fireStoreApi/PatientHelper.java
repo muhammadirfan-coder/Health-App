@@ -8,11 +8,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class PatientHelper {
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
-    static CollectionReference PatientRef = db.collection("Patient");
+    static CollectionReference patientRef = db.collection("Patient");
 
     public static void addPatient(String name, String address, String tel) {
-        Patient patient = new Patient(name, address, tel, FirebaseAuth.getInstance().getCurrentUser().getEmail(), "03/23/2000", "Single");
+        Patient patient = new Patient(name, address, tel, FirebaseAuth.getInstance().getCurrentUser().getEmail(), "23/03/2000", "Single");
         System.out.println("Create object patient");
-        PatientRef.document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).set(patient);
+        patientRef.document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).set(patient);
     }
 }

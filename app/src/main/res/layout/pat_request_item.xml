@@ -49,7 +49,7 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/onlineStatut"
+            android:id="@+id/onlineStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/pat_request_description"

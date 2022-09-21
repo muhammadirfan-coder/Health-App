@@ -36,7 +36,6 @@ public class TestActivity extends AppCompatActivity {
     NonSwipeViewPager viewPager;
     Button btn_previous_step;
     Button btn_next_step;
-    Unbinder unbinder;
     LocalBroadcastManager localBroadcastManager;
     private final BroadcastReceiver buttonNextReceiver = new BroadcastReceiver() {
         @Override
@@ -96,14 +95,14 @@ public class TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (step < 3 || step == 0) {
                     step++;
-                    Common.CurrentAppointmentType = spinner.getSelectedItem().toString();
-                    Log.e("Spinner", Common.CurrentAppointmentType);
+                    Common.currentAppointmentType = spinner.getSelectedItem().toString();
+                    Log.e("Spinner", Common.currentAppointmentType);
 
                     if (step == 1) {
-                        if (Common.CurrentDoctor != null) {
+                        if (Common.currentDoctor != null) {
                             Common.currentTimeSlot = -1;
                             Common.currentDate = Calendar.getInstance();
-                            loadTimeSlotOfDoctor(Common.CurrentDoctor);
+                            loadTimeSlotOfDoctor(Common.currentDoctor);
                         }
                     } else if (step == 2) {
                         // if(Common.currentTimeSlot != -1)

@@ -63,7 +63,6 @@ public class DoctorAdapterFiltered extends RecyclerView.Adapter<DoctorAdapterFil
         final Doctor doctor = mTubeListFiltered.get(i);
         final TextView t = doctorHolder.title;
         doctorHolder.title.setText(doctor.getName());
-        /// ajouter l'image
 
         String imageId = doctor.getEmail() + ".jpg";
         pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId);
@@ -109,9 +108,9 @@ public class DoctorAdapterFiltered extends RecyclerView.Adapter<DoctorAdapterFil
             @Override
             public void onClick(View v) {
                 doc = doctor.getEmail();
-                Common.CurrentDoctor = doctor.getEmail();
-                Common.CurrentDoctorName = doctor.getName();
-                Common.CurrentPhone = doctor.getTel();
+                Common.currentDoctor = doctor.getEmail();
+                Common.currentDoctorName = doctor.getName();
+                Common.currentPhone = doctor.getTel();
                 openPage(v.getContext());
 
             }

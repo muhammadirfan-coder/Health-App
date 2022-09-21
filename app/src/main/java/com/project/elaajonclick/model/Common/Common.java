@@ -11,16 +11,16 @@ public class Common {
     public static final String KEY_TIME_SLOT = "TIME_SLOT";
     public static final String KEY_STEP = "STEP";
     public static final String KEY_CONFIRM_BOOKING = "CONFIRM_BOOKING";
-    public static String CurrentUserid;
-    public static String CurrentUserName;
-    public static String CurrentUserType = "patient";
+    public static String currentUserID;
+    public static String currentUserName;
+    public static String currentUserType = "patient";
     public static int step = 0;
-    public static String CurrentDoctor = "testdoc@testdoc.com";
-    public static String CurrentAppointmentType;
+    public static String currentDoctor = "testdoc@testdoc.com";
+    public static String currentAppointmentType;
     public static int currentTimeSlot = -1;
-    public static String CurrentDoctorName = "yassine";
+    public static String currentDoctorName = "yassine";
     public static Calendar currentDate = Calendar.getInstance();
-    public static String CurrentPhone = "062912361255";
+    public static String currentPhone = "062912361255";
     public static SimpleDateFormat simpleFormat = new SimpleDateFormat("dd_MM_yyyy");
 
     public static int convertBloodToInt(String s) {

@@ -76,13 +76,13 @@ public class EditProfilePatientActivity extends AppCompatActivity {
         pStorageRef = FirebaseStorage.getInstance().getReference("DoctorProfile");
         pDatabaseRef = FirebaseDatabase.getInstance().getReference("DoctorProfile");
 
-        //get the default doctor's informations from ProfileDoctorActivity
+        //get the default doctor's information from ProfileDoctorActivity
         Intent intent = getIntent(); //get the current intent
         String current_name = intent.getStringExtra("CURRENT_NAME");
         String current_phone = intent.getStringExtra("CURRENT_PHONE");
         String current_address = intent.getStringExtra("CURRENT_ADDRESS");
 
-        //Set the default informtions in he text fields
+        //Set the default information in he text fields
         doctorName.setText(current_name);
         doctorPhone.setText(current_phone);
         doctorAddress.setText(current_address);

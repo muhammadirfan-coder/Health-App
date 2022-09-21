@@ -47,10 +47,10 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home); //ici layout de page d'acceuil MEDECIN
+        setContentView(R.layout.activity_doctor_home);
         unbinder = ButterKnife.bind(this, this);
-        Common.CurrentDoctor = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        Common.CurrentUserType = "doctor";
+        Common.currentDoctor = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Common.currentUserType = "doctor";
         listPatients = findViewById(R.id.listPatients);
         BtnRequest = findViewById(R.id.btnRequest);
         SignOutBtn2 = findViewById(R.id.signOutBtn);
@@ -81,8 +81,6 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
         appointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // doc = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-                //showDatePickerDialog(v.getContext());
                 Intent k = new Intent(DoctorHomeActivity.this, DoctorAppointmentActivity.class);
                 startActivity(k);
             }

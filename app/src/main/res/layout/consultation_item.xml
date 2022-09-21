@@ -23,7 +23,7 @@
             android:background="@color/colorPrimary">
 
             <TextView
-                android:id="@+id/appointement_month"
+                android:id="@+id/appointment_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="July"
@@ -34,7 +34,7 @@
                 android:layout_marginTop="16dp"/>
 
             <TextView
-                android:id="@+id/appointement_day"
+                android:id="@+id/appointment_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -46,7 +46,7 @@
                 android:textSize="28sp" />
 
             <TextView
-                android:id="@+id/appointement_day_name"
+                android:id="@+id/appointment_day_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#b8b8b8"
@@ -70,7 +70,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="17dp"
                 android:maxLines="1"
-                android:text="Timming"
+                android:text="Timing"
                 android:textColor="#b8b8b8"
                 android:textSize="12sp" />
 
@@ -127,7 +127,7 @@
                 android:layout_marginStart="7dp"
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="6dp"
-                android:text="Appointement type"
+                android:text="Appointment type"
                 android:textColor="#b8b8b8"
                 android:textSize="12sp" />
 
@@ -146,7 +146,7 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/see_file_btn"
+                android:id="@+id/see_file_button"
                 android:layout_width="72dp"
                 android:layout_height="26dp"
                 android:layout_alignParentEnd="true"
