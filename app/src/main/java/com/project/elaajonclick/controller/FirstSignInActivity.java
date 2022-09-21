@@ -20,8 +20,8 @@ import com.project.elaajonclick.model.fireStoreApi.UserHelper;
 
 import static android.widget.AdapterView.*;
 
-public class FirstSigninActivity extends AppCompatActivity {
-    private static final String TAG = "FirstSigninActivity";
+public class FirstSignInActivity extends AppCompatActivity {
+    private static final String TAG = "FirstSignInActivity";
     private EditText fullName;
     private EditText birthday;
     private EditText teL;
@@ -45,11 +45,11 @@ public class FirstSigninActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        final Spinner specialiteList = (Spinner) findViewById(R.id.specialite_spinner);
-        ArrayAdapter<CharSequence> adapterSpecialiteList = ArrayAdapter.createFromResource(this,
+        final Spinner specialityList = (Spinner) findViewById(R.id.specialite_spinner);
+        ArrayAdapter<CharSequence> adapterSpecialityList = ArrayAdapter.createFromResource(this,
                 R.array.specialization_spinner, android.R.layout.simple_spinner_item);
-        adapterSpecialiteList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        specialiteList.setAdapter(adapterSpecialiteList);
+        adapterSpecialityList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        specialityList.setAdapter(adapterSpecialityList);
         String newAccountType = spinner.getSelectedItem().toString();
 
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -58,15 +58,15 @@ public class FirstSigninActivity extends AppCompatActivity {
                 String selected = spinner.getSelectedItem().toString();
                 Log.e(TAG, "onItemSelected:" + selected);
                 if (selected.equals("Doctor")) {
-                    specialiteList.setVisibility(View.VISIBLE);
+                    specialityList.setVisibility(View.VISIBLE);
                 } else {
-                    specialiteList.setVisibility(View.GONE);
+                    specialityList.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                specialiteList.setVisibility(View.GONE);
+                specialityList.setVisibility(View.GONE);
             }
         });
 
@@ -74,21 +74,21 @@ public class FirstSigninActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String fullname, birtDay, tel, type, specialite;
-                fullname = fullName.getText().toString();
+                String fullName, birtDay, tel, type, speciality;
+                fullName = FirstSignInActivity.this.fullName.getText().toString();
                 birtDay = birthday.getText().toString();
                 tel = teL.getText().toString();
                 type = spinner.getSelectedItem().toString();
-                specialite = specialiteList.getSelectedItem().toString();
-                UserHelper.addUser(fullname, birtDay, tel, type);
+                speciality = specialityList.getSelectedItem().toString();
+                UserHelper.addUser(fullName, birtDay, tel, type);
                 if (type.equals("Patient")) {
-                    PatientHelper.addPatient(fullname, "address", tel);
-                    System.out.println("Add patient " + fullname + " to patient collection");
+                    PatientHelper.addPatient(fullName, "address", tel);
+                    System.out.println("Add patient " + fullName + " to patient collection");
 
                 } else {
-                    DoctorHelper.addDoctor(fullname, "address", tel, specialite);
+                    DoctorHelper.addDoctor(fullName, "address", tel, speciality);
                 }
-                Intent k = new Intent(FirstSigninActivity.this, MainActivity.class);
+                Intent k = new Intent(FirstSignInActivity.this, MainActivity.class);
                 startActivity(k);
             }
 

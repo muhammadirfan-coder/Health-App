@@ -52,7 +52,7 @@ public class ConsultationFragment extends Fragment {
 
         // 6 - Update widgets with it
         rootView.setBackgroundColor(color);
-        textView.setText("Page numéro " + position);
+        textView.setText("Page number " + position);
 
         Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
 

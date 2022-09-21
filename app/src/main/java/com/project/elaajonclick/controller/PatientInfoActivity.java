@@ -27,7 +27,7 @@ public class PatientInfoActivity extends AppCompatActivity {
 
     EditText heightBtn;
     EditText weightBtn;
-    Spinner bloodtypeSpinner;
+    Spinner bloodTypeSpinner;
     Button updateBtn;
 
     @Override
@@ -37,11 +37,11 @@ public class PatientInfoActivity extends AppCompatActivity {
         updateBtn = findViewById(R.id.updateInfoBtn);
         heightBtn = findViewById(R.id.heightBtn);
         weightBtn = findViewById(R.id.weightBtn);
-        final Spinner specialiteList = (Spinner) findViewById(R.id.bloodType);
-        ArrayAdapter<CharSequence> adapterSpecialiteList = ArrayAdapter.createFromResource(this,
+        final Spinner specialityList = (Spinner) findViewById(R.id.bloodType);
+        ArrayAdapter<CharSequence> adapterSpecialityList = ArrayAdapter.createFromResource(this,
                 R.array.blood_spinner, android.R.layout.simple_spinner_item);
-        adapterSpecialiteList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        specialiteList.setAdapter(adapterSpecialiteList);
+        adapterSpecialityList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        specialityList.setAdapter(adapterSpecialityList);
 
         String patient_name = getIntent().getStringExtra("patient_name");
         String patient_email = getIntent().getStringExtra("patient_email");
@@ -53,7 +53,7 @@ public class PatientInfoActivity extends AppCompatActivity {
                         weightBtn.setText("" + documentSnapshot.getString("weight"));
                         heightBtn.setText("" + documentSnapshot.getString("height"));
                         if (documentSnapshot.getString("bloodType") != null)
-                            specialiteList.setSelection(convertBloodToInt(documentSnapshot.getString("bloodType")));
+                            specialityList.setSelection(convertBloodToInt(documentSnapshot.getString("bloodType")));
                     }
                 });
 
@@ -63,19 +63,19 @@ public class PatientInfoActivity extends AppCompatActivity {
                 HashMap<String, Object> map = new HashMap<>();
                 map.put("height", "" + heightBtn.getText());
                 map.put("weight", "" + weightBtn.getText());
-                map.put("bloodType", "" + specialiteList.getSelectedItem().toString());
-                Log.e("tag", "onClick: " + specialiteList.getTag());
+                map.put("bloodType", "" + specialityList.getSelectedItem().toString());
+                Log.e("tag", "onClick: " + specialityList.getTag());
                 FirebaseFirestore.getInstance().collection("Patient").document(patient_email).collection("moreInfo")
                         .document(patient_email).set(map);
                 Toast.makeText(PatientInfoActivity.this, "Update Success!", Toast.LENGTH_SHORT).show();
 
             }
         });
-        if (Common.CurrentUserType.equals("patient")) {
+        if (Common.CurrentUserType.equals("doctor")) {
             updateBtn.setVisibility(View.GONE);
             heightBtn.setEnabled(false);
             weightBtn.setEnabled(false);
-            specialiteList.setEnabled(false);
+            specialityList.setEnabled(false);
         }
     }
 

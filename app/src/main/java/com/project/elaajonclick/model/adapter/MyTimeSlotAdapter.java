@@ -1,5 +1,6 @@
 package com.project.elaajonclick.model.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,7 +21,7 @@ import com.project.elaajonclick.model.Interface.IRecyclerItemSelectedListener;
 
 import com.project.elaajonclick.R;
 
-import com.project.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.model.AppointmentInformation;
 import com.project.elaajonclick.model.TimeSlot;
 
 import com.google.firebase.firestore.DocumentReference;
@@ -64,7 +65,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.txt_time_slot.setText(new StringBuilder(Common.convertTimeSlotToString(position)).toString());
         if (timeSlotList.size() == 0) {
             holder.card_time_slot.setCardBackgroundColor(context.getResources().getColor(android.R.color.white));
@@ -83,7 +84,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
 
                     holder.txt_time_slot_description.setText("Full");
                     if (slotValue.getType().equals("Checked"))
-                        holder.txt_time_slot_description.setText("Choosen");
+                        holder.txt_time_slot_description.setText("Chosen");
                     holder.txt_time_slot_description.setTextColor(context.getResources()
                             .getColor(android.R.color.white));
                     holder.txt_time_slot.setTextColor(context.getResources().getColor(android.R.color.white));
@@ -96,7 +97,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
             cardViewList.add(holder.card_time_slot);
 
 
-        holder.setiRecyclerItemSelectedListener(new IRecyclerItemSelectedListener() {
+        holder.setRecyclerItemSelectedListener(new IRecyclerItemSelectedListener() {
             @Override
             public void onItemSelectedListener(View view, int pos) {
                 for (CardView cardView : cardViewList) {
@@ -121,24 +122,24 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                            ApointementInformation apointementInformation = new ApointementInformation();
-                            apointementInformation.setApointementType(Common.Currentaappointementatype);
-                            apointementInformation.setDoctorId(Common.CurreentDoctor);
-                            apointementInformation.setDoctorName(Common.CurrentDoctorName);
-                            apointementInformation.setChemin("Doctor/" + Common.CurreentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
-                            apointementInformation.setType("full");
-                            apointementInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
+                            AppointmentInformation appointmentInformation = new AppointmentInformation();
+                            appointmentInformation.setAppointmentType(Common.CurrentAppointmentType);
+                            appointmentInformation.setDoctorId(Common.CurrentDoctor);
+                            appointmentInformation.setDoctorName(Common.CurrentDoctorName);
+                            appointmentInformation.setPath("Doctor/" + Common.CurrentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
+                            appointmentInformation.setType("full");
+                            appointmentInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
                                     .append("at")
                                     .append(simpleDateFormat.format(Common.currentDate.getTime())).toString());
-                            apointementInformation.setSlot(Long.valueOf(Common.currentTimeSlot));
+                            appointmentInformation.setSlot(Long.valueOf(Common.currentTimeSlot));
 
                             DocumentReference bookingDate = FirebaseFirestore.getInstance()
                                     .collection("Doctor")
-                                    .document(Common.CurreentDoctor)
+                                    .document(Common.CurrentDoctor)
                                     .collection(Common.simpleFormat.format(Common.currentDate.getTime()))
                                     .document(String.valueOf(Common.currentTimeSlot));
 
-                            bookingDate.set(apointementInformation);
+                            bookingDate.set(appointmentInformation);
                             dialog.dismiss();
                         }
                     });
@@ -171,7 +172,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
 
         IRecyclerItemSelectedListener iRecyclerItemSelectedListener;
 
-        public void setiRecyclerItemSelectedListener(IRecyclerItemSelectedListener iRecyclerItemSelectedListener) {
+        public void setRecyclerItemSelectedListener(IRecyclerItemSelectedListener iRecyclerItemSelectedListener) {
             this.iRecyclerItemSelectedListener = iRecyclerItemSelectedListener;
         }
 

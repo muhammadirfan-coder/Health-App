@@ -20,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     Button SignOutBtn;
     Button searchPatBtn;
     Button myDoctors;
-    Button BtnRequst;
+    Button BtnRequest;
     Button profile;
     Button appointment;
 
@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         appointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent k = new Intent(HomeActivity.this, PatientAppointementsActivity.class);
+                Intent k = new Intent(HomeActivity.this, PatientAppointmentsActivity.class);
                 startActivity(k);
             }
         });
@@ -59,15 +59,15 @@ public class HomeActivity extends AppCompatActivity {
         myDoctors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent k = new Intent(HomeActivity.this, MyDoctorsAvtivity.class);
+                Intent k = new Intent(HomeActivity.this, MyDoctorsActivity.class);
                 startActivity(k);
             }
         });
-        BtnRequst = findViewById(R.id.btnRequst);
-        BtnRequst.setOnClickListener(new View.OnClickListener() {
+        BtnRequest = findViewById(R.id.btnRequest);
+        BtnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DossierMedical.class);
+                Intent intent = new Intent(getApplicationContext(), MedicalRecord.class);
                 intent.putExtra("patient_email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
                 startActivity(intent);
             }

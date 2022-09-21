@@ -26,8 +26,8 @@ public class ChatActivity extends AppCompatActivity {
     private CollectionReference MessageRef1;
     private CollectionReference MessageRef2;
     private MessageAdapter adapter;
-    private TextInputEditText envoyer;
-    private Button btnEnvoyer;
+    private TextInputEditText send;
+    private Button btnSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +36,16 @@ public class ChatActivity extends AppCompatActivity {
         extras = getIntent().getExtras();
         MessageRef1 = FirebaseFirestore.getInstance().collection("chat").document(extras.getString("key1")).collection("message");
         MessageRef2 = FirebaseFirestore.getInstance().collection("chat").document(extras.getString("key2")).collection("message");
-        envoyer = (TextInputEditText) findViewById(R.id.activity_mentor_chat_message_edit_text);
-        btnEnvoyer = (Button) findViewById(R.id.activity_mentor_chat_send_button);
+        send = (TextInputEditText) findViewById(R.id.activity_mentor_chat_message_edit_text);
+        btnSend = (Button) findViewById(R.id.activity_mentor_chat_send_button);
         setUpRecyclerView();
-        btnEnvoyer.setOnClickListener(new View.OnClickListener() {
+        btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message msg = new Message(envoyer.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                Message msg = new Message(send.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail());
                 MessageRef1.document().set(msg);
                 MessageRef2.document().set(msg);
-                envoyer.setText("");
+                send.setText("");
             }
         });
     }

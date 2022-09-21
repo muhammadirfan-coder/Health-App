@@ -2,24 +2,24 @@ package com.project.elaajonclick.model;
 
 public class Patient {
     private String name;
-    private String adresse;
+    private String address;
     private String tel;
     private String email;
-    private String dateNaissance;
-    private String situationFamiliale;
+    private String DOB;
+    private String maritalStatus;
 
 
     public Patient() {
         //needed for firebase
     }
 
-    public Patient(String name, String adresse, String tel, String email, String dateNaissance, String situationFamiliale) {
+    public Patient(String name, String address, String tel, String email, String DOB, String maritalStatus) {
         this.name = name;
-        this.adresse = adresse;
+        this.address = address;
         this.tel = tel;
         this.email = email;
-        this.dateNaissance = dateNaissance;
-        this.situationFamiliale = situationFamiliale;
+        this.DOB = DOB;
+        this.maritalStatus = maritalStatus;
     }
 
     public String getName() {
@@ -30,12 +30,12 @@ public class Patient {
         this.name = name;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTel() {
@@ -54,19 +54,19 @@ public class Patient {
         this.email = email;
     }
 
-    public String getDateNaissance() {
-        return dateNaissance;
+    public String getDOB() {
+        return DOB;
     }
 
-    public void setDateNaissance(String dateNaissance) {
-        this.dateNaissance = dateNaissance;
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
     }
 
-    public String getSituationFamiliale() {
-        return situationFamiliale;
+    public String getMaritalStatus() {
+        return maritalStatus;
     }
 
-    public void setSituationFamiliale(String situationFamiliale) {
-        this.situationFamiliale = situationFamiliale;
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 }

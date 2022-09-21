@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.project.elaajonclick.R;
 
-import com.project.elaajonclick.model.Fiche;
+import com.project.elaajonclick.model.CureType;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -20,43 +20,43 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class FicheActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class CureTypeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText maladie;
+    private EditText medicines;
     private EditText description;
-    private EditText traitement;
-    private Spinner ficheType;
+    private EditText treatment;
+    private Spinner cureType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fiche);
+        setContentView(R.layout.activity_cure_type);
 
-        maladie = findViewById(R.id.fiche_maladie);
-        description = findViewById(R.id.fiche_description);
-        traitement = findViewById(R.id.fiche_traitement);
-        ficheType = findViewById(R.id.fiche_type_spinner);
+        medicines = findViewById(R.id.cure_medicines);
+        description = findViewById(R.id.cure_description);
+        treatment = findViewById(R.id.cure_treatment);
+        cureType = findViewById(R.id.cure_type_spinner);
 
         //Spinner to choose fiche type
-        Spinner spinner = findViewById(R.id.fiche_type_spinner);
+        Spinner spinner = findViewById(R.id.cure_type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cure_type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
         //Add fiche
-        Button addFicheButton = findViewById(R.id.button_add_fiche);
+        Button addFicheButton = findViewById(R.id.button_add_cure);
         addFicheButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addFiche();
+                addCureType();
             }
         });
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String SeltectedFicheType = adapterView.getItemAtPosition(i).toString();
+        String SelectedCureType = adapterView.getItemAtPosition(i).toString();
 
     }
 
@@ -65,21 +65,21 @@ public class FicheActivity extends AppCompatActivity implements AdapterView.OnIt
 
     }
 
-    private void addFiche() {
-        String maladieFiche = maladie.getText().toString();
-        String descriptionFiche = description.getText().toString();
-        String traitemenfiche = traitement.getText().toString();
-        String typeFiche = ficheType.getSelectedItem().toString();
+    private void addCureType() {
+        String medicinesType = medicines.getText().toString();
+        String descriptionType = description.getText().toString();
+        String treatmentType = treatment.getText().toString();
+        String typeCure = cureType.getSelectedItem().toString();
 
         String patient_name = getIntent().getStringExtra("patient_name");
         String patient_email = getIntent().getStringExtra("patient_email");
 
 
-        CollectionReference ficheRef = FirebaseFirestore.getInstance().collection("Patient").document("" + patient_email + "")
+        CollectionReference cureRef = FirebaseFirestore.getInstance().collection("Patient").document("" + patient_email + "")
                 .collection("MyMedicalFolder");
-        ficheRef.document().set(new Fiche(maladieFiche, descriptionFiche, traitemenfiche, typeFiche, FirebaseAuth.getInstance().getCurrentUser().getEmail()));
-        //ficheRef.add(new Fiche(maladieFiche, descriptionFiche, traitemenfiche, typeFiche, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()));
-        Toast.makeText(this, "Fiche added." + patient_name, Toast.LENGTH_LONG).show();
+        cureRef.document().set(new CureType(medicinesType, descriptionType, treatmentType, typeCure, FirebaseAuth.getInstance().getCurrentUser().getEmail()));
+        //cureRef.add(new Fiche(medicinesType, descriptionType, treatmentType, typeCure, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()));
+        Toast.makeText(this, "Cure added." + patient_name, Toast.LENGTH_LONG).show();
         finish();
     }
 

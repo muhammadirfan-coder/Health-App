@@ -2,21 +2,21 @@ package com.project.elaajonclick.model;
 
 public class Doctor {
     private String name;
-    private String adresse;
+    private String address;
     private String tel;
     private String email;
-    private String specialite;
+    private String speciality;
 
     public Doctor() {
         //needed for firebase
     }
 
-    public Doctor(String name, String adresse, String tel, String email, String specialite) {
+    public Doctor(String name, String address, String tel, String email, String speciality) {
         this.name = name;
-        this.adresse = adresse;
+        this.address = address;
         this.tel = tel;
         this.email = email;
-        this.specialite = specialite;
+        this.speciality = speciality;
     }
 
     public String getName() {
@@ -27,12 +27,12 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTel() {
@@ -51,11 +51,11 @@ public class Doctor {
         this.email = email;
     }
 
-    public String getSpecialite() {
-        return specialite;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public void setSpecialite(String specialite) {
-        this.specialite = specialite;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 }

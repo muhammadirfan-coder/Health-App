@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.project.elaajonclick.R;
 
 import com.project.elaajonclick.model.adapter.ConsultationAdapter;
-import com.project.elaajonclick.model.Fiche;
+import com.project.elaajonclick.model.CureType;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
@@ -23,7 +23,7 @@ import com.google.firebase.firestore.Query;
 public class ConsultationFragmentPage extends Fragment {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference FicheRef;
+    private CollectionReference CureRef;
     private ConsultationAdapter adapter;
     View result;
 
@@ -49,11 +49,11 @@ public class ConsultationFragmentPage extends Fragment {
     private void setUpRecyclerView() {
 
         String email_id = getActivity().getIntent().getExtras().getString("patient_email");
-        FicheRef = db.collection("Patient").document(email_id).collection("MyMedicalFolder");
-        Query query = FicheRef.whereEqualTo("type", "Consultation");
+        CureRef = db.collection("Patient").document(email_id).collection("MyMedicalFolder");
+        Query query = CureRef.whereEqualTo("type", "Consultation");
 
-        FirestoreRecyclerOptions<Fiche> options = new FirestoreRecyclerOptions.Builder<Fiche>()
-                .setQuery(query, Fiche.class)
+        FirestoreRecyclerOptions<CureType> options = new FirestoreRecyclerOptions.Builder<CureType>()
+                .setQuery(query, CureType.class)
                 .build();
 
         adapter = new ConsultationAdapter(options);

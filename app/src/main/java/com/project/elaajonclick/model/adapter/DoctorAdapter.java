@@ -30,24 +30,24 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DoctoreAdapter extends FirestoreRecyclerAdapter<Doctor, DoctoreAdapter.DoctoreHolder> {
+public class DoctorAdapter extends FirestoreRecyclerAdapter<Doctor, DoctorAdapter.DoctorHolder> {
     static String doc;
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
     static CollectionReference addRequest = db.collection("Request");
 
-    public DoctoreAdapter(@NonNull FirestoreRecyclerOptions<Doctor> options) {
+    public DoctorAdapter(@NonNull FirestoreRecyclerOptions<Doctor> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final DoctoreHolder doctoreHolder, int i, @NonNull final Doctor doctor) {
-        final TextView t = doctoreHolder.title;
-        doctoreHolder.title.setText(doctor.getName());
-        doctoreHolder.specialite.setText("Speciality : " + doctor.getSpecialite());
+    protected void onBindViewHolder(@NonNull final DoctorHolder doctorHolder, int i, @NonNull final Doctor doctor) {
+        final TextView t = doctorHolder.title;
+        doctorHolder.title.setText(doctor.getName());
+        doctorHolder.speciality.setText("Speciality : " + doctor.getSpeciality());
         final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         final String idDoc = doctor.getEmail();
-        // doctoreHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));
-        doctoreHolder.addDoc.setOnClickListener(new View.OnClickListener() {
+        // doctorHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));
+        doctorHolder.addDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Map<String, Object> note = new HashMap<>();
@@ -57,17 +57,17 @@ public class DoctoreAdapter extends FirestoreRecyclerAdapter<Doctor, DoctoreAdap
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Snackbar.make(t, "Demande envoyée", Snackbar.LENGTH_SHORT).show();
+                                Snackbar.make(t, "Request Sent", Snackbar.LENGTH_SHORT).show();
                             }
                         });
-                doctoreHolder.addDoc.setVisibility(View.INVISIBLE);
+                doctorHolder.addDoc.setVisibility(View.INVISIBLE);
             }
         });
-        doctoreHolder.appointemenBtn.setOnClickListener(new View.OnClickListener() {
+        doctorHolder.appointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doc = doctor.getEmail();
-                Common.CurreentDoctor = doctor.getEmail();
+                Common.CurrentDoctor = doctor.getEmail();
                 openPage(v.getContext());
 
             }
@@ -78,28 +78,28 @@ public class DoctoreAdapter extends FirestoreRecyclerAdapter<Doctor, DoctoreAdap
 
     @NonNull
     @Override
-    public DoctoreHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DoctorHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.doctor_item,
                 parent, false);
-        return new DoctoreHolder(v);
+        return new DoctorHolder(v);
     }
 
 
-    class DoctoreHolder extends RecyclerView.ViewHolder {
-        Button appointemenBtn;
+    class DoctorHolder extends RecyclerView.ViewHolder {
+        Button appointmentBtn;
         TextView title;
-        TextView specialite;
+        TextView speciality;
         ImageView image;
         Button addDoc;
         Button load;
 
-        public DoctoreHolder(@NonNull View itemView) {
+        public DoctorHolder(@NonNull View itemView) {
             super(itemView);
             addDoc = itemView.findViewById(R.id.addDocBtn);
             title = itemView.findViewById(R.id.doctor_view_title);
-            specialite = itemView.findViewById(R.id.text_view_description);
+            speciality = itemView.findViewById(R.id.text_view_description);
             image = itemView.findViewById(R.id.doctor_item_image);
-            appointemenBtn = itemView.findViewById(R.id.appointemenBtn);
+            appointmentBtn = itemView.findViewById(R.id.appointemenBtn);
         }
     }
 

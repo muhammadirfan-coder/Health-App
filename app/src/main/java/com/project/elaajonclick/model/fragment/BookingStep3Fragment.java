@@ -21,7 +21,7 @@ import com.project.elaajonclick.model.Common.Common;
 
 import com.project.elaajonclick.R;
 
-import com.project.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.model.AppointmentInformation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -54,27 +54,27 @@ public class BookingStep3Fragment extends Fragment {
     TextView txt_booking_phone;
 
     @OnClick(R.id.btn_confirm)
-    void confirmeApointement() {
-        ApointementInformation apointementInformation = new ApointementInformation();
-        apointementInformation.setApointementType(Common.Currentaappointementatype);
-        apointementInformation.setDoctorId(Common.CurreentDoctor);
-        apointementInformation.setDoctorName(Common.CurrentDoctorName);
-        apointementInformation.setPatientName(Common.CurrentUserName);
-        apointementInformation.setPatientId(Common.CurrentUserid);
-        apointementInformation.setChemin("Doctor/" + Common.CurreentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
-        apointementInformation.setType("Checked");
-        apointementInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
+    void confirmAppointment() {
+        AppointmentInformation appointmentInformation = new AppointmentInformation();
+        appointmentInformation.setAppointmentType(Common.CurrentAppointmentType);
+        appointmentInformation.setDoctorId(Common.CurrentDoctor);
+        appointmentInformation.setDoctorName(Common.CurrentDoctorName);
+        appointmentInformation.setPatientName(Common.CurrentUserName);
+        appointmentInformation.setPatientId(Common.CurrentUserid);
+        appointmentInformation.setPath("Doctor/" + Common.CurrentDoctor + "/" + Common.simpleFormat.format(Common.currentDate.getTime()) + "/" + Common.currentTimeSlot);
+        appointmentInformation.setType("Checked");
+        appointmentInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
                 .append("at")
                 .append(simpleDateFormat.format(Common.currentDate.getTime())).toString());
-        apointementInformation.setSlot(Long.valueOf(Common.currentTimeSlot));
+        appointmentInformation.setSlot(Long.valueOf(Common.currentTimeSlot));
 
         DocumentReference bookingDate = FirebaseFirestore.getInstance()
                 .collection("Doctor")
-                .document(Common.CurreentDoctor)
+                .document(Common.CurrentDoctor)
                 .collection(Common.simpleFormat.format(Common.currentDate.getTime()))
                 .document(String.valueOf(Common.currentTimeSlot));
 
-        bookingDate.set(apointementInformation)
+        bookingDate.set(appointmentInformation)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -92,10 +92,10 @@ public class BookingStep3Fragment extends Fragment {
                 }).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        FirebaseFirestore.getInstance().collection("Doctor").document(Common.CurreentDoctor)
-                                .collection("apointementrequest").document(apointementInformation.getTime().replace("/", "_")).set(apointementInformation);
-                        FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
-                                .document(apointementInformation.getTime().replace("/", "_")).set(apointementInformation);
+                        FirebaseFirestore.getInstance().collection("Doctor").document(Common.CurrentDoctor)
+                                .collection("appointmentRequest").document(appointmentInformation.getTime().replace("/", "_")).set(appointmentInformation);
+                        FirebaseFirestore.getInstance().collection("Patient").document(appointmentInformation.getPatientId()).collection("calendar")
+                                .document(appointmentInformation.getTime().replace("/", "_")).set(appointmentInformation);
 
                     }
                 });
@@ -119,7 +119,7 @@ public class BookingStep3Fragment extends Fragment {
                 .append("at")
                 .append(simpleDateFormat.format(Common.currentDate.getTime())));
         txt_booking_phone.setText(Common.CurrentPhone);
-        txt_booking_type.setText(Common.Currentaappointementatype);
+        txt_booking_type.setText(Common.CurrentAppointmentType);
     }
 
     public BookingStep3Fragment() {

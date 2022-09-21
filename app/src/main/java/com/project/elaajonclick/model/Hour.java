@@ -2,7 +2,7 @@ package com.project.elaajonclick.model;
 
 public class Hour {
     private String patient;
-    private String choosen;
+    private String chosen;
     private String patientName;
 
     public String getPatientName() {
@@ -15,7 +15,7 @@ public class Hour {
 
     public Hour(String patient) {
         this.patient = patient;
-        choosen = "false";
+        chosen = "false";
     }
 
     public Hour() {
@@ -30,11 +30,11 @@ public class Hour {
         this.patient = patient;
     }
 
-    public String getChoosen() {
-        return choosen;
+    public String getChosen() {
+        return chosen;
     }
 
-    public void setChoosen(String choosen) {
-        this.choosen = choosen;
+    public void setChosen(String chosen) {
+        this.chosen = chosen;
     }
 }

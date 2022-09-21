@@ -33,17 +33,16 @@ import dmax.dialog.SpotsDialog;
 
 
 public class ProfilePatientActivity extends AppCompatActivity {
-    private MaterialTextView doctorName;
-    private MaterialTextView doctorSpe;
-    private MaterialTextView doctorPhone;
-    private MaterialTextView doctorEmail;
-    private MaterialTextView doctorAddress;
-    private MaterialTextView doctorAbout;
-    private ImageView doctorImage;
+    private MaterialTextView patientName;
+    private MaterialTextView patientPhone;
+    private MaterialTextView patientEmail;
+    private MaterialTextView patientAddress;
+    private MaterialTextView patientAbout;
+    private ImageView patientImage;
     StorageReference pathReference;
-    final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference docRef = db.collection("Patient").document("" + doctorID + "");
+    DocumentReference patRef = db.collection("Patient").document("" + patientID + "");
 
 
     @Override
@@ -51,13 +50,12 @@ public class ProfilePatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_doctor);
 
-        doctorName = findViewById(R.id.doctor_name);
-        doctorSpe = findViewById(R.id.doctor_specialite);
-        doctorPhone = findViewById(R.id.doctor_phone);
-        doctorEmail = findViewById(R.id.doctor_email);
-        doctorAddress = findViewById(R.id.doctor_address);
-        doctorAbout = findViewById(R.id.doctor_about);
-        doctorImage = findViewById(R.id.imageView3);
+        patientName = findViewById(R.id.doctor_name);
+        patientPhone = findViewById(R.id.doctor_phone);
+        patientEmail = findViewById(R.id.doctor_email);
+        patientAddress = findViewById(R.id.doctor_address);
+        patientAbout = findViewById(R.id.doctor_about);
+        patientImage = findViewById(R.id.imageView3);
         Drawable defaultImage = getResources().getDrawable(R.drawable.ic_anon_user_48dp); //default user image
         AlertDialog dialog = new SpotsDialog.Builder().setContext(this).setCancelable(true).build();
         dialog.show();
@@ -74,7 +72,7 @@ public class ProfilePatientActivity extends AppCompatActivity {
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(doctorImage);//hna fin kayn Image view
+                        .into(patientImage);
                 dialog.dismiss();
                 // profileImage.setImageURI(uri);
             }
@@ -85,15 +83,14 @@ public class ProfilePatientActivity extends AppCompatActivity {
             }
         });
 
-        docRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+        patRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                doctorName.setText(documentSnapshot.getString("name"));
-                // doctorSpe.setText(documentSnapshot.getString("dateNaissance"));
-                doctorPhone.setText(documentSnapshot.getString("tel"));
-                doctorEmail.setText(documentSnapshot.getString("email"));
-                doctorAddress.setText(documentSnapshot.getString("adresse"));
-                doctorImage.setImageDrawable(defaultImage);
+                patientName.setText(documentSnapshot.getString("name"));
+                patientPhone.setText(documentSnapshot.getString("tel"));
+                patientEmail.setText(documentSnapshot.getString("email"));
+                patientAddress.setText(documentSnapshot.getString("address"));
+                patientImage.setImageDrawable(defaultImage);
             }
         });
         // Find the toolbar view inside the activity layout
@@ -103,8 +100,6 @@ public class ProfilePatientActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
-        //getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         // Get access to the custom title view
@@ -148,9 +143,9 @@ public class ProfilePatientActivity extends AppCompatActivity {
 
     private void startEditActivity() {
         Intent intent = new Intent(this, EditProfilePatientActivity.class);
-        intent.putExtra("CURRENT_NAME", doctorName.getText().toString());
-        intent.putExtra("CURRENT_PHONE", doctorPhone.getText().toString());
-        intent.putExtra("CURRENT_ADDRESS", doctorAddress.getText().toString());
+        intent.putExtra("CURRENT_NAME", patientName.getText().toString());
+        intent.putExtra("CURRENT_PHONE", patientPhone.getText().toString());
+        intent.putExtra("CURRENT_ADDRESS", patientAddress.getText().toString());
         startActivity(intent);
         finish();
     }

@@ -35,8 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFiltred.DoctoreHolder2> implements Filterable {
-    public static boolean specialiteSearch = false;
+public class DoctorAdapterFiltered extends RecyclerView.Adapter<DoctorAdapterFiltered.DoctorHolder2> implements Filterable {
+    public static boolean specialitySearch = false;
     static String doc;
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
     static CollectionReference addRequest = db.collection("Request");
@@ -45,24 +45,24 @@ public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFilt
     StorageReference pathReference;
 
 
-    public DoctorAdapterFiltred(List<Doctor> tubeList) {
+    public DoctorAdapterFiltered(List<Doctor> tubeList) {
         mTubeList = tubeList;
         mTubeListFiltered = tubeList;
     }
 
     @NonNull
     @Override
-    public DoctoreHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DoctorHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.doctor_item,
                 parent, false);
-        return new DoctoreHolder2(v);
+        return new DoctorHolder2(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DoctoreHolder2 doctoreHolder, int i) {
+    public void onBindViewHolder(@NonNull DoctorHolder2 doctorHolder, int i) {
         final Doctor doctor = mTubeListFiltered.get(i);
-        final TextView t = doctoreHolder.title;
-        doctoreHolder.title.setText(doctor.getName());
+        final TextView t = doctorHolder.title;
+        doctorHolder.title.setText(doctor.getName());
         /// ajouter l'image
 
         String imageId = doctor.getEmail() + ".jpg";
@@ -70,12 +70,12 @@ public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFilt
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(doctoreHolder.image.getContext())
+                Picasso.with(doctorHolder.image.getContext())
                         .load(uri)
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(doctoreHolder.image);//Image location
+                        .into(doctorHolder.image);//Image location
 
                 // profileImage.setImageURI(uri);
             }
@@ -85,11 +85,11 @@ public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFilt
                 // Handle any errors
             }
         });
-        doctoreHolder.specialite.setText("Speciality : " + doctor.getSpecialite());
+        doctorHolder.speciality.setText("Speciality : " + doctor.getSpeciality());
         final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         final String idDoc = doctor.getEmail();
-        // doctoreHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));
-        doctoreHolder.addDoc.setOnClickListener(new View.OnClickListener() {
+        // doctorHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));
+        doctorHolder.addDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Map<String, Object> note = new HashMap<>();
@@ -99,17 +99,17 @@ public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFilt
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Snackbar.make(t, "Demande envoyée", Snackbar.LENGTH_SHORT).show();
+                                Snackbar.make(t, "Request Sent", Snackbar.LENGTH_SHORT).show();
                             }
                         });
-                doctoreHolder.addDoc.setVisibility(View.INVISIBLE);
+                doctorHolder.addDoc.setVisibility(View.INVISIBLE);
             }
         });
-        doctoreHolder.appointemenBtn.setOnClickListener(new View.OnClickListener() {
+        doctorHolder.appointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doc = doctor.getEmail();
-                Common.CurreentDoctor = doctor.getEmail();
+                Common.CurrentDoctor = doctor.getEmail();
                 Common.CurrentDoctorName = doctor.getName();
                 Common.CurrentPhone = doctor.getTel();
                 openPage(v.getContext());
@@ -135,12 +135,12 @@ public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFilt
                 } else {
                     List<Doctor> filteredList = new ArrayList<>();
                     for (Doctor tube : mTubeList) {
-                        if (specialiteSearch == false) {
+                        if (specialitySearch == false) {
                             if (tube.getName().toLowerCase().contains(pattern) || tube.getName().toLowerCase().contains(pattern)) {
                                 filteredList.add(tube);
                             }
                         } else {
-                            if (tube.getSpecialite().toLowerCase().contains(pattern) || tube.getSpecialite().toLowerCase().contains(pattern)) {
+                            if (tube.getSpeciality().toLowerCase().contains(pattern) || tube.getSpeciality().toLowerCase().contains(pattern)) {
                                 filteredList.add(tube);
                             }
                         }
@@ -161,22 +161,22 @@ public class DoctorAdapterFiltred extends RecyclerView.Adapter<DoctorAdapterFilt
         };
     }
 
-    class DoctoreHolder2 extends RecyclerView.ViewHolder {
+    class DoctorHolder2 extends RecyclerView.ViewHolder {
 
-        Button appointemenBtn;
+        Button appointmentBtn;
         TextView title;
-        TextView specialite;
+        TextView speciality;
         ImageView image;
         Button addDoc;
         Button load;
 
-        public DoctoreHolder2(@NonNull View itemView) {
+        public DoctorHolder2(@NonNull View itemView) {
             super(itemView);
             addDoc = itemView.findViewById(R.id.addDocBtn);
             title = itemView.findViewById(R.id.doctor_view_title);
-            specialite = itemView.findViewById(R.id.text_view_description);
+            speciality = itemView.findViewById(R.id.text_view_description);
             image = itemView.findViewById(R.id.doctor_item_image);
-            appointemenBtn = itemView.findViewById(R.id.appointemenBtn);
+            appointmentBtn = itemView.findViewById(R.id.appointemenBtn);
         }
     }
 

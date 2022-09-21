@@ -6,13 +6,13 @@ public class RDV {
     private int noRDV;
     private Date dateRDV;
     private Date datePriseRDV;
-    private String nomMedecin;
+    private String nomMedicine;
 
-    public RDV(int noRDV, Date dateRDV, Date datePriseRDV, String nomMedecin) {
+    public RDV(int noRDV, Date dateRDV, Date datePriseRDV, String nomMedicine) {
         this.noRDV = noRDV;
         this.dateRDV = dateRDV;
         this.datePriseRDV = datePriseRDV;
-        this.nomMedecin = nomMedecin;
+        this.nomMedicine = nomMedicine;
     }
 
     public int getNoRDV() {
@@ -39,16 +39,13 @@ public class RDV {
         this.datePriseRDV = datePriseRDV;
     }
 
-    public String getNomMedecin() {
-        return nomMedecin;
+    public String getNomMedicine() {
+        return nomMedicine;
     }
 
-    public void setNomMedecin(String nomMedecin) {
-        this.nomMedecin = nomMedecin;
+    public void setNomMedicine(String nomMedicine) {
+        this.nomMedicine = nomMedicine;
     }
 
-    //Afficher l'etat de RDV
-    public void etatRDV() {
-        System.out.println("Le Rendez-vous " + getNoRDV() + " est en cours");
-    }
+
 }

@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnRequst"
+        android:id="@+id/btnRequest"
         android:layout_width="118dp"
         android:layout_height="107dp"
         android:layout_marginTop="32dp"
@@ -158,12 +158,10 @@
                 android:id="@+id/home_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="155dp"
-                android:layout_marginLeft="155dp"
-                android:layout_marginBottom="156dp"
+                android:layout_marginLeft="151dp"
+                android:layout_marginBottom="144dp"
                 android:gravity="center"
                 android:text="Home"
                 android:textColor="#ffffff"
@@ -173,12 +171,10 @@
                 android:id="@+id/doctorName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="106dp"
-                android:layout_marginLeft="106dp"
-                android:layout_marginBottom="79dp"
+                android:layout_marginLeft="99dp"
+                android:layout_marginBottom="86dp"
                 android:text="Welcome Doctor"
                 android:textColor="#ffffff"
                 android:textSize="26sp" />
@@ -186,13 +182,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="105dp"
-                android:layout_marginLeft="105dp"
-                android:layout_marginBottom="55dp"
-                android:text="How we can help you oday?"
+                android:layout_marginLeft="96dp"
+                android:layout_marginBottom="61dp"
+                android:text="How we can help you today?"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 
@@ -219,11 +213,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="19dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRequst"
-        app:layout_constraintEnd_toEndOf="@+id/btnRequst"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRequest"
+        app:layout_constraintEnd_toEndOf="@+id/btnRequest"
         app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="@+id/btnRequst"
-        app:layout_constraintTop_toTopOf="@+id/btnRequst"
+        app:layout_constraintStart_toStartOf="@+id/btnRequest"
+        app:layout_constraintTop_toTopOf="@+id/btnRequest"
         app:layout_constraintVertical_bias="0.403"
         app:srcCompat="@drawable/ic_appointement" />
 

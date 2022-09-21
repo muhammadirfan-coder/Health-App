@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.project.elaajonclick.controller.FicheActivity">
+    tools:context="com.project.elaajonclick.controller.CureTypeActivity">
 
     <EditText
-        android:id="@+id/fiche_maladie"
+        android:id="@+id/cure_medicines"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Medicine"
@@ -17,7 +17,7 @@
         android:textColorHint="#22BE87" />
 
     <EditText
-        android:id="@+id/fiche_description"
+        android:id="@+id/cure_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
@@ -27,7 +27,7 @@
         />
 
     <EditText
-        android:id="@+id/fiche_traitement"
+        android:id="@+id/cure_treatment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
@@ -46,7 +46,7 @@
         android:textSize="16sp"/>
 
     <Spinner
-        android:id="@+id/fiche_type_spinner"
+        android:id="@+id/cure_type_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp"
@@ -60,7 +60,7 @@
         android:layout_height="0dp"
         android:gravity="center|bottom">
     <Button
-        android:id="@+id/button_add_fiche"
+        android:id="@+id/button_add_cure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_green"

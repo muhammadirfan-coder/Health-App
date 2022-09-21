@@ -15,8 +15,8 @@ public class Common {
     public static String CurrentUserName;
     public static String CurrentUserType = "patient";
     public static int step = 0;
-    public static String CurreentDoctor = "testdoc@testdoc.com";
-    public static String Currentaappointementatype;
+    public static String CurrentDoctor = "testdoc@testdoc.com";
+    public static String CurrentAppointmentType;
     public static int currentTimeSlot = -1;
     public static String CurrentDoctorName = "yassine";
     public static Calendar currentDate = Calendar.getInstance();
@@ -25,8 +25,6 @@ public class Common {
 
     public static int convertBloodToInt(String s) {
         switch (s) {
-            case "A+":
-                return 0;
             case "A-":
                 return 1;
             case "B+":

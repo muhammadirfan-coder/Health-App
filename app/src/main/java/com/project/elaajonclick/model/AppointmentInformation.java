@@ -1,23 +1,23 @@
 package com.project.elaajonclick.model;
 
-public class ApointementInformation {
-    private String patientName, time, doctorId, doctorName, patientId, type, apointementType, chemin;
+public class AppointmentInformation {
+    private String patientName, time, doctorId, doctorName, patientId, type, appointmentType, path;
     private long slot;
 
-    public String getApointementType() {
-        return apointementType;
+    public String getAppointmentType() {
+        return appointmentType;
     }
 
-    public void setApointementType(String apointementType) {
-        this.apointementType = apointementType;
+    public void setAppointmentType(String appointmentType) {
+        this.appointmentType = appointmentType;
     }
 
-    public String getChemin() {
-        return chemin;
+    public String getPath() {
+        return path;
     }
 
-    public void setChemin(String chemin) {
-        this.chemin = chemin;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getType() {
@@ -36,10 +36,10 @@ public class ApointementInformation {
         this.patientId = patientId;
     }
 
-    public ApointementInformation() {
+    public AppointmentInformation() {
     }
 
-    public ApointementInformation(String patientName, String time, String doctorId, String doctorName, long slot) {
+    public AppointmentInformation(String patientName, String time, String doctorId, String doctorName, long slot) {
         this.patientName = patientName;
         this.time = time;
         this.doctorId = doctorId;

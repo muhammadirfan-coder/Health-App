@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import com.project.elaajonclick.R;
 
-import com.project.elaajonclick.model.adapter.PatientAppointmentsAdapter;
-import com.project.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.model.adapter.MyDoctorsAdapter;
+import com.project.elaajonclick.model.Doctor;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,32 +17,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PatientAppointementsActivity extends AppCompatActivity {
+public class MyDoctorsActivity extends AppCompatActivity {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference myDoctorsRef = db.collection("Patient");
-    private PatientAppointmentsAdapter adapter;
+    private MyDoctorsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_appointments);
+        setContentView(R.layout.activity_my_doctors);
 
         setUpRecyclerView();
     }
 
     public void setUpRecyclerView() {
         //Get the doctors by patient id
-        final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        Query query = myDoctorsRef.document("" + doctorID + "")
-                .collection("calendar").orderBy("time", Query.Direction.DESCENDING);
+        final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Query query = myDoctorsRef.document("" + patientID + "")
+                .collection("MyDoctors").orderBy("name", Query.Direction.DESCENDING);
 
-        FirestoreRecyclerOptions<ApointementInformation> options = new FirestoreRecyclerOptions.Builder<ApointementInformation>()
-                .setQuery(query, ApointementInformation.class)
+        FirestoreRecyclerOptions<Doctor> options = new FirestoreRecyclerOptions.Builder<Doctor>()
+                .setQuery(query, Doctor.class)
                 .build();
 
-        adapter = new PatientAppointmentsAdapter(options);
-        //List current appointments
-        RecyclerView recyclerView = findViewById(R.id.patient_appointements);
+        adapter = new MyDoctorsAdapter(options);
+        //ListMyDoctors
+        RecyclerView recyclerView = findViewById(R.id.ListMyDoctors);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

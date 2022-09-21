@@ -33,11 +33,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class DossierMedical extends AppCompatActivity {
-    private final static String TAG = "DossierMedical";
+public class MedicalRecord extends AppCompatActivity {
+    private final static String TAG = "MedicalRecord";
     private FloatingActionButton createNewFicheButton;
     private String patient_email;
-    private Button infobtn;
+    private Button infoBtn;
     private String patient_name;
     private String patient_phone;
     final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -54,21 +54,21 @@ public class DossierMedical extends AppCompatActivity {
         patient_email = getIntent().getStringExtra("patient_email");
         this.configureViewPager();
 
-        Log.d(TAG, "onCreate dossier medical activity: started");
+        Log.d(TAG, "onCreate medical record activity: started");
         getIncomingIntent();
 
         createNewFicheButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         createNewFicheButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openPatientFiche();
+                openPatientCureType();
             }
         });
         if (Common.CurrentUserType.equals("patient")) {
             createNewFicheButton.setVisibility(View.GONE);
         }
-        infobtn = findViewById(R.id.infobtn);
-        infobtn.setOnClickListener(new View.OnClickListener() {
+        infoBtn = findViewById(R.id.infobtn);
+        infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openPatientInfo();
@@ -99,7 +99,7 @@ public class DossierMedical extends AppCompatActivity {
 
     }
 
-    //Receive patient informations from the previous activity
+
     private void getIncomingIntent() {
         Log.d(TAG, "getIncomingIntent: checking for incoming intents");
         //Check if the incoming intents exist
@@ -110,7 +110,7 @@ public class DossierMedical extends AppCompatActivity {
             patient_phone = getIntent().getStringExtra("patient_phone");
 
             //set patient name, email, phone number
-            setPatientInfos(patient_name, patient_email, patient_phone);
+            setPatientInfo(patient_name, patient_email, patient_phone);
         } else {
             Log.d(TAG, "No intent");
             patRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -121,7 +121,7 @@ public class DossierMedical extends AppCompatActivity {
                     patient_email = documentSnapshot.getString("email");
 
                     //set patient name, email, phone number
-                    setPatientInfos(patient_name, patient_email, patient_phone);
+                    setPatientInfo(patient_name, patient_email, patient_phone);
                 }
             });
         }
@@ -130,8 +130,8 @@ public class DossierMedical extends AppCompatActivity {
     }
 
     //Add patient name, email, phone number to the medical folder
-    private void setPatientInfos(String patient_name, String patient_email, String patient_phone) {
-        Log.d(TAG, "setPatientInfos: put patient infos");
+    private void setPatientInfo(String patient_name, String patient_email, String patient_phone) {
+        Log.d(TAG, "setPatientInfo: put patient info");
 
         TextView name = findViewById(R.id.patient_name);
         name.setText(patient_name);
@@ -158,13 +158,12 @@ public class DossierMedical extends AppCompatActivity {
         tabs.setTabMode(TabLayout.MODE_FIXED);
         //Set Adapter PageAdapter and glue it
         TextView text = new TextView(this);
-        //((ViewGroup) tabs.getChildAt(0)).getChildAt(0).setBackgroundColor(0xFF00FF00);
-        //((ViewGroup) tabs.getChildAt(0)).getChildAt(1).setBackgroundColor(0xFF00FF00);
+
 
     }
 
-    private void openPatientFiche() {
-        Intent intent = new Intent(this, FicheActivity.class);
+    private void openPatientCureType() {
+        Intent intent = new Intent(this, CureTypeActivity.class);
         String patient_name = getIntent().getStringExtra("patient_name");
         String patient_email = getIntent().getStringExtra("patient_email");
         intent.putExtra("patient_email", patient_email);

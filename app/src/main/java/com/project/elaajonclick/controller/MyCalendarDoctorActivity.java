@@ -64,7 +64,7 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
                 .build();
         Calendar date = Calendar.getInstance();
         date.add(Calendar.DATE, 0);
-        loadAvailabelTimeSlotOfDoctor(Common.CurreentDoctor, simpleDateFormat.format(date.getTime()));
+        loadAvailableTimeSlotOfDoctor(Common.CurrentDoctor, simpleDateFormat.format(date.getTime()));
         recycler_time_slot.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recycler_time_slot.setLayoutManager(gridLayoutManager);
@@ -84,7 +84,7 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
             public void onDateSelected(Calendar date, int position) {
                 if (Common.currentDate.getTimeInMillis() != date.getTimeInMillis()) {
                     Common.currentDate = date;
-                    loadAvailabelTimeSlotOfDoctor(Common.CurreentDoctor, simpleDateFormat.format(date.getTime()));
+                    loadAvailableTimeSlotOfDoctor(Common.CurrentDoctor, simpleDateFormat.format(date.getTime()));
 
                 }
 
@@ -93,12 +93,12 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
 
     }
 
-    private void loadAvailabelTimeSlotOfDoctor(String curreentDoctor, String bookDate) {
+    private void loadAvailableTimeSlotOfDoctor(String currentDoctor, String bookDate) {
         alertDialog.show();
 
         doctorDoc = FirebaseFirestore.getInstance()
                 .collection("Doctor")
-                .document(Common.CurreentDoctor);
+                .document(Common.CurrentDoctor);
         doctorDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -107,7 +107,7 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
                     if (documentSnapshot.exists()) {
                         CollectionReference date = FirebaseFirestore.getInstance()
                                 .collection("Doctor")
-                                .document(Common.CurreentDoctor)
+                                .document(Common.CurrentDoctor)
                                 .collection(bookDate);
 
                         date.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

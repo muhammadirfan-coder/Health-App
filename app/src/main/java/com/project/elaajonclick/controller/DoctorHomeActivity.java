@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
 import com.project.elaajonclick.R;
 
@@ -26,9 +25,9 @@ import butterknife.Unbinder;
 public class DoctorHomeActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     static String doc;
     Button SignOutBtn2;
-    Button BtnRequst;
+    Button BtnRequest;
     Button listPatients;
-    Button appointementBtn;
+    Button appointmentBtn;
 
     @OnClick(R.id.profile)
     void profileBtnClick() {
@@ -50,12 +49,12 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home); //ici layout de page d'acceuil MEDECIN
         unbinder = ButterKnife.bind(this, this);
-        Common.CurreentDoctor = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Common.CurrentDoctor = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         Common.CurrentUserType = "doctor";
         listPatients = findViewById(R.id.listPatients);
-        BtnRequst = findViewById(R.id.btnRequst);
+        BtnRequest = findViewById(R.id.btnRequest);
         SignOutBtn2 = findViewById(R.id.signOutBtn);
-        appointementBtn = findViewById(R.id.appointement);
+        appointmentBtn = findViewById(R.id.appointement);
         SignOutBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,10 +64,10 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
                 startActivity(intent);
             }
         });
-        BtnRequst.setOnClickListener(new View.OnClickListener() {
+        BtnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent k = new Intent(DoctorHomeActivity.this, ConfirmedAppointmensActivity.class);
+                Intent k = new Intent(DoctorHomeActivity.this, ConfirmedAppointmentsActivity.class);
                 startActivity(k);
             }
         });
@@ -79,12 +78,12 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
                 startActivity(k);
             }
         });
-        appointementBtn.setOnClickListener(new View.OnClickListener() {
+        appointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // doc = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
                 //showDatePickerDialog(v.getContext());
-                Intent k = new Intent(DoctorHomeActivity.this, DoctorAppointementActivity.class);
+                Intent k = new Intent(DoctorHomeActivity.this, DoctorAppointmentActivity.class);
                 startActivity(k);
             }
         });
@@ -108,7 +107,7 @@ public class DoctorHomeActivity extends AppCompatActivity implements DatePickerD
     }
 
     private void openPage(Context wf, String d, String day) {
-        Intent i = new Intent(wf, AppointementActivity.class);
+        Intent i = new Intent(wf, AppointmentActivity.class);
         i.putExtra("key1", d + "");
         i.putExtra("key2", day);
         i.putExtra("key3", "doctor");

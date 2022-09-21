@@ -21,31 +21,63 @@
                 app:showAsAction="ifRoom" />
             <item
                 android:id="@+id/option_general"
-                android:title="général"
+                android:title="General Physician"
                 app:showAsAction="ifRoom" />
             <item
-                android:id="@+id/option_Dentiste"
-                android:title="Dentiste"
+                android:id="@+id/option_Dentist"
+                android:title="Dentist"
                 app:showAsAction="ifRoom" />
             <item
-                android:id="@+id/option_ORL"
-                android:title="ORL"
+                android:id="@+id/option_ophthalmology"
+                android:title="Ophthalmologist"
                 app:showAsAction="ifRoom" />
             <item
-                android:id="@+id/option_Ophtalmologue"
-                android:title="Ophtalmologue"
+                android:id="@+id/option_cardio"
+                android:title="Cardiologist"
                 app:showAsAction="ifRoom" />
             <item
-                android:id="@+id/option_Pédiatre"
-                android:title="Pédiatre"
+                android:id="@+id/option_pediatrics"
+                android:title="Pediatrician"
                 app:showAsAction="ifRoom" />
             <item
-                android:id="@+id/option_Radiologue"
-                android:title="Radiologue"
+                android:id="@+id/option_radio"
+                android:title="Radiologist"
                 app:showAsAction="ifRoom" />
             <item
-                android:id="@+id/option_Rhumatologue"
-                android:title="Rhumatologue"
+                android:id="@+id/option_pathology"
+                android:title="Pathologist"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_neurology"
+                android:title="Neurologist"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_psychiatrist"
+                android:title="Psychiatrist"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_Gynecology"
+                android:title="Gynecologist"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_Urology"
+                android:title="Urologist"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_surgeon"
+                android:title="Surgeon"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_dermatology"
+                android:title="Dermatologist"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_orthopedics"
+                android:title="Orthopedics"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/option_nephrology"
+                android:title="Nephrologist"
                 app:showAsAction="ifRoom" />
 
         </menu>

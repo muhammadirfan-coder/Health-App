@@ -96,18 +96,18 @@ public class TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (step < 3 || step == 0) {
                     step++;
-                    Common.Currentaappointementatype = spinner.getSelectedItem().toString();
-                    Log.e("Spinnr", Common.Currentaappointementatype);
+                    Common.CurrentAppointmentType = spinner.getSelectedItem().toString();
+                    Log.e("Spinner", Common.CurrentAppointmentType);
 
                     if (step == 1) {
-                        if (Common.CurreentDoctor != null) {
+                        if (Common.CurrentDoctor != null) {
                             Common.currentTimeSlot = -1;
                             Common.currentDate = Calendar.getInstance();
-                            loadTimeSlotOfDoctor(Common.CurreentDoctor);
+                            loadTimeSlotOfDoctor(Common.CurrentDoctor);
                         }
                     } else if (step == 2) {
                         // if(Common.currentTimeSlot != -1)
-                        confirmeBooking();
+                        confirmBooking();
                     }
                     viewPager.setCurrentItem(step);
                 }
@@ -129,7 +129,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
 
-    private void confirmeBooking() {
+    private void confirmBooking() {
 
         Intent intent = new Intent(Common.KEY_CONFIRM_BOOKING);
         localBroadcastManager.sendBroadcast(intent);
@@ -163,8 +163,8 @@ public class TestActivity extends AppCompatActivity {
     private void setupStepView() {
         List<String> stepList = new ArrayList<>();
         stepList.add("Purpose");
-        stepList.add("Tme and Date");
-        stepList.add("finish");
+        stepList.add("Time and Date");
+        stepList.add("Finish");
         stepView.setSteps(stepList);
 
     }

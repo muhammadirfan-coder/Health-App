@@ -33,7 +33,7 @@ public class SearchPatActivity extends AppCompatActivity {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference doctorRef = db.collection("Doctor");
 
-    private DoctorAdapterFiltred adapter;
+    private DoctorAdapterFiltered adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +54,10 @@ public class SearchPatActivity extends AppCompatActivity {
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                adapter = new DoctorAdapterFiltred(task.getResult().toObjects(Doctor.class));
+                adapter = new DoctorAdapterFiltered(task.getResult().toObjects(Doctor.class));
                 recyclerView.setAdapter(adapter);
             }
         });
-        //FirestoreRecyclerOptions<Doctor> options = new FirestoreRecyclerOptions.Builder<Doctor>()
-        //  .setQuery(query, Doctor.class)
-        //  .build();
-
-        //adapter = new DoctoreAdapter(options);
 
 
     }
@@ -101,7 +96,7 @@ public class SearchPatActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                DoctorAdapterFiltred.specialiteSearch = false;
+                DoctorAdapterFiltered.specialitySearch = false;
                 adapter.getFilter().filter(newText);
                 return false;
             }
@@ -114,37 +109,70 @@ public class SearchPatActivity extends AppCompatActivity {
         //3 - Handle actions on menu items
         switch (item.getItemId()) {
             case R.id.option_all:
-                DoctorAdapterFiltred.specialiteSearch = true;
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("");
                 return true;
             case R.id.option_general:
-                DoctorAdapterFiltred.specialiteSearch = true;
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("General Physician");
                 return true;
-            case R.id.option_Dentiste:
-                DoctorAdapterFiltred.specialiteSearch = true;
+            case R.id.option_Dentist:
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("Dentist");
                 return true;
-            case R.id.option_Ophtalmologue:
-                DoctorAdapterFiltred.specialiteSearch = true;
+            case R.id.option_cardio:
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("Ophthalmologist");
                 return true;
-            case R.id.option_ORL:
-                DoctorAdapterFiltred.specialiteSearch = true;
+            case R.id.option_ophthalmology:
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("Cardiologist");
                 return true;
-            case R.id.option_Pédiatre:
-                DoctorAdapterFiltred.specialiteSearch = true;
+            case R.id.option_pediatrics:
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("Pediatrician");
                 return true;
-            case R.id.option_Radiologue:
-                DoctorAdapterFiltred.specialiteSearch = true;
+            case R.id.option_radio:
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("Radiologist");
                 return true;
-            case R.id.option_Rhumatologue:
-                DoctorAdapterFiltred.specialiteSearch = true;
+            case R.id.option_pathology:
+                DoctorAdapterFiltered.specialitySearch = true;
                 adapter.getFilter().filter("Pathologist");
                 return true;
+            case R.id.option_neurology:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Neurologist");
+                return true;
+            case R.id.option_psychiatrist:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Psychiatrist");
+                return true;
+            case R.id.option_Gynecology:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Gynecologist");
+                return true;
+            case R.id.option_Urology:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Urologist");
+                return true;
+            case R.id.option_surgeon:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Surgeon");
+                return true;
+            case R.id.option_dermatology:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Dermatologist");
+                return true;
+            case R.id.option_orthopedics:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Orthopedics");
+                return true;
+            case R.id.option_nephrology:
+                DoctorAdapterFiltered.specialitySearch = true;
+                adapter.getFilter().filter("Nephrologist");
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

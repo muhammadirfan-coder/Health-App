@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.project.elaajonclick.controller.ChatActivity;
-import com.project.elaajonclick.controller.DossierMedical;
+import com.project.elaajonclick.controller.MedicalRecord;
 
 import com.project.elaajonclick.R;
 
@@ -99,7 +99,7 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
     }
 
     private void openPatientMedicalFolder(Context medicalFolder, Patient patient) {
-        Intent intent = new Intent(medicalFolder, DossierMedical.class);
+        Intent intent = new Intent(medicalFolder, MedicalRecord.class);
         intent.putExtra("patient_name", patient.getName());
         intent.putExtra("patient_email", patient.getEmail());
         intent.putExtra("patient_phone", patient.getTel());

@@ -32,7 +32,7 @@ import dmax.dialog.SpotsDialog;
 
 public class ProfileDoctorActivity extends AppCompatActivity {
     private MaterialTextView doctorName;
-    private MaterialTextView doctorSpe;
+    private MaterialTextView doctorSpeciality;
     private MaterialTextView doctorPhone;
     private MaterialTextView doctorEmail;
     private MaterialTextView doctorAddress;
@@ -51,7 +51,7 @@ public class ProfileDoctorActivity extends AppCompatActivity {
 
         doctorImage = findViewById(R.id.imageView3);
         doctorName = findViewById(R.id.doctor_name);
-        doctorSpe = findViewById(R.id.doctor_specialite);
+        doctorSpeciality = findViewById(R.id.doctor_specialite);
         doctorPhone = findViewById(R.id.doctor_phone);
         doctorEmail = findViewById(R.id.doctor_email);
         doctorAddress = findViewById(R.id.doctor_address);
@@ -71,7 +71,7 @@ public class ProfileDoctorActivity extends AppCompatActivity {
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(doctorImage);//hna fin kayn Image view
+                        .into(doctorImage);
                 dialog.dismiss();
                 // profileImage.setImageURI(uri);
             }
@@ -86,10 +86,10 @@ public class ProfileDoctorActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 doctorName.setText(documentSnapshot.getString("name"));
-                doctorSpe.setText(documentSnapshot.getString("specialite"));
+                doctorSpeciality.setText(documentSnapshot.getString("speciality"));
                 doctorPhone.setText(documentSnapshot.getString("tel"));
                 doctorEmail.setText(documentSnapshot.getString("email"));
-                doctorAddress.setText(documentSnapshot.getString("adresse"));
+                doctorAddress.setText(documentSnapshot.getString("address"));
             }
         });
         // Find the toolbar view inside the activity layout
@@ -99,8 +99,7 @@ public class ProfileDoctorActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
-        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         // Get access to the custom title view

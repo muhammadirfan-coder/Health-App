@@ -17,7 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.project.elaajonclick.R;
 
-public class AppointementActivity extends AppCompatActivity {
+public class AppointmentActivity extends AppCompatActivity {
 
     private LinearLayout lis;
     //final List<String> fruits_list = new ArrayList<String>(Arrays.asList(fruits));

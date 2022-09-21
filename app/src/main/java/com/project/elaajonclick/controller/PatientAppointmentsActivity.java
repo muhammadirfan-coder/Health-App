@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import com.project.elaajonclick.R;
 
-import com.project.elaajonclick.model.adapter.ConfirmedAppointmentsAdapter;
-import com.project.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.model.adapter.PatientAppointmentsAdapter;
+import com.project.elaajonclick.model.AppointmentInformation;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,15 +17,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ConfirmedAppointmensActivity extends AppCompatActivity {
+public class PatientAppointmentsActivity extends AppCompatActivity {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final CollectionReference myDoctorsRef = db.collection("Doctor");
-    private ConfirmedAppointmentsAdapter adapter;
+    private final CollectionReference myDoctorsRef = db.collection("Patient");
+    private PatientAppointmentsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirmed_appointements);
+        setContentView(R.layout.activity_patient_appointments);
 
         setUpRecyclerView();
     }
@@ -36,13 +36,13 @@ public class ConfirmedAppointmensActivity extends AppCompatActivity {
         Query query = myDoctorsRef.document("" + doctorID + "")
                 .collection("calendar").orderBy("time", Query.Direction.DESCENDING);
 
-        FirestoreRecyclerOptions<ApointementInformation> options = new FirestoreRecyclerOptions.Builder<ApointementInformation>()
-                .setQuery(query, ApointementInformation.class)
+        FirestoreRecyclerOptions<AppointmentInformation> options = new FirestoreRecyclerOptions.Builder<AppointmentInformation>()
+                .setQuery(query, AppointmentInformation.class)
                 .build();
 
-        adapter = new ConfirmedAppointmentsAdapter(options);
+        adapter = new PatientAppointmentsAdapter(options);
         //List current appointments
-        RecyclerView recyclerView = findViewById(R.id.confirmed_appointements_list);
+        RecyclerView recyclerView = findViewById(R.id.patient_appointements);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

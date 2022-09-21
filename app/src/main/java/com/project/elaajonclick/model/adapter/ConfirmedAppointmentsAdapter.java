@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.project.elaajonclick.R;
 
-import com.project.elaajonclick.model.ApointementInformation;
+import com.project.elaajonclick.model.AppointmentInformation;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -22,20 +22,20 @@ import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<ApointementInformation, ConfirmedAppointmentsAdapter.ConfirmedAppointmentsHolder> {
+public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<AppointmentInformation, ConfirmedAppointmentsAdapter.ConfirmedAppointmentsHolder> {
     StorageReference pathReference;
 
-    public ConfirmedAppointmentsAdapter(@NonNull FirestoreRecyclerOptions<ApointementInformation> options) {
+    public ConfirmedAppointmentsAdapter(@NonNull FirestoreRecyclerOptions<AppointmentInformation> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ConfirmedAppointmentsHolder confirmedAppointmentsHolder, int position, @NonNull final ApointementInformation apointementInformation) {
-        confirmedAppointmentsHolder.dateAppointement.setText(apointementInformation.getTime());
-        confirmedAppointmentsHolder.patientName.setText(apointementInformation.getPatientName());
-        confirmedAppointmentsHolder.appointementType.setText(apointementInformation.getApointementType());
+    protected void onBindViewHolder(@NonNull ConfirmedAppointmentsHolder confirmedAppointmentsHolder, int position, @NonNull final AppointmentInformation appointmentInformation) {
+        confirmedAppointmentsHolder.dateAppointment.setText(appointmentInformation.getTime());
+        confirmedAppointmentsHolder.patientName.setText(appointmentInformation.getPatientName());
+        confirmedAppointmentsHolder.appointmentType.setText(appointmentInformation.getAppointmentType());
 
-        String imageId = apointementInformation.getPatientId() + ".jpg"; //add a title image
+        String imageId = appointmentInformation.getPatientId() + ".jpg"; //add a title image
         pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId); //storage the image
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -66,16 +66,16 @@ public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<Apoin
     }
 
     class ConfirmedAppointmentsHolder extends RecyclerView.ViewHolder {
-        TextView dateAppointement;
+        TextView dateAppointment;
         TextView patientName;
-        TextView appointementType;
+        TextView appointmentType;
         ImageView patientImage;
 
         public ConfirmedAppointmentsHolder(@NonNull View itemView) {
             super(itemView);
-            dateAppointement = itemView.findViewById(R.id.appointement_date);
+            dateAppointment = itemView.findViewById(R.id.appointement_date);
             patientName = itemView.findViewById(R.id.patient_name);
-            appointementType = itemView.findViewById(R.id.appointement_type);
+            appointmentType = itemView.findViewById(R.id.appointement_type);
             patientImage = itemView.findViewById(R.id.patient_image);
         }
     }

@@ -106,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                 } else {
-                    Toast.makeText(MainActivity.this, "vous devez rensegner toutes les champs",
+                    Toast.makeText(MainActivity.this, "You must fill out all required fields",
                             Toast.LENGTH_SHORT).show();
                     if (!password.equals(confirmPass)) {
-                        Toast.makeText(MainActivity.this, "Confirm pass don't match password",
+                        Toast.makeText(MainActivity.this, "Confirm password don't match password",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                 } else {
-                    Toast.makeText(MainActivity.this, "vous devez rensegnier toutes les champs",
+                    Toast.makeText(MainActivity.this, "You must fill out all required fields",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -249,14 +249,13 @@ public class MainActivity extends AppCompatActivity {
                                     } else {
                                         Intent k = new Intent(MainActivity.this, DoctorHomeActivity.class);
                                         startActivity(k);
-                                        //Snackbar.make(findViewById(R.id.main_layout), "Doctor interface entraint de realisation", Snackbar.LENGTH_SHORT).show();
                                     }
                                 }
                             });
 
 
                         } else {
-                            Intent k = new Intent(MainActivity.this, FirstSigninActivity.class);
+                            Intent k = new Intent(MainActivity.this, FirstSignInActivity.class);
                             startActivity(k);
                         }
                     }

@@ -2,21 +2,21 @@ package com.project.elaajonclick.model;
 
 import java.util.Date;
 
-public class Dossier {
-    private String dossierID;
+public class MedicalRecord {
+    private String recordID;
     private Date dateCreation;
 
-    public Dossier(String dossierID, Date dateCreation) {
-        this.dossierID = dossierID;
+    public MedicalRecord(String recordID, Date dateCreation) {
+        this.recordID = recordID;
         this.dateCreation = dateCreation;
     }
 
-    public String getDossierID() {
-        return dossierID;
+    public String getRecordID() {
+        return recordID;
     }
 
-    public void setDossierID(String dossierID) {
-        this.dossierID = dossierID;
+    public void setRecordID(String recordID) {
+        this.recordID = recordID;
     }
 
     public Date getDateCreation() {
