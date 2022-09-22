@@ -112,7 +112,6 @@ public class DoctorAdapterFiltered extends RecyclerView.Adapter<DoctorAdapterFil
                 Common.currentDoctorName = doctor.getName();
                 Common.currentPhone = doctor.getTel();
                 openPage(v.getContext());
-
             }
         });
 
