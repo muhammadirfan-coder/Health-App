@@ -86,7 +86,7 @@ public class SearchPatActivity extends AppCompatActivity {
 
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + "Search patient" + "</font>"));
+        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + "Search Doctor" + "</font>"));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

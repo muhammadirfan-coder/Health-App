@@ -17,7 +17,7 @@
 
             <item
                 android:id="@+id/option_all"
-                android:title="all"
+                android:title="All"
                 app:showAsAction="ifRoom" />
             <item
                 android:id="@+id/option_general"
