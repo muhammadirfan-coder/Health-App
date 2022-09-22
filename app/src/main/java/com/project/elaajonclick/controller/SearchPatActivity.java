@@ -121,11 +121,11 @@ public class SearchPatActivity extends AppCompatActivity {
                 return true;
             case R.id.option_cardio:
                 DoctorAdapterFiltered.specialitySearch = true;
-                adapter.getFilter().filter("Ophthalmologist");
+                adapter.getFilter().filter("Cardiologist");
                 return true;
             case R.id.option_ophthalmology:
                 DoctorAdapterFiltered.specialitySearch = true;
-                adapter.getFilter().filter("Cardiologist");
+                adapter.getFilter().filter("Ophthalmology");
                 return true;
             case R.id.option_pediatrics:
                 DoctorAdapterFiltered.specialitySearch = true;
