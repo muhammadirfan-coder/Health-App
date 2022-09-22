@@ -120,7 +120,10 @@ public class DoctorAdapterFiltered extends RecyclerView.Adapter<DoctorAdapterFil
 
     @Override
     public int getItemCount() {
-        return mTubeListFiltered.size();
+        if (mTubeListFiltered != null) {
+            return mTubeListFiltered.size();
+        }
+        return 0;
     }
 
     @Override
